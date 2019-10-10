@@ -1,0 +1,45 @@
+$primary:       #16191C;
+$primary-dark:  #16191C;
+$primary-hover: #303235;
+
+$widget-bg: $primary-dark;
+$body-bg: $primary-hover;
+$footer-bg: $primary;
+
+$headings-color: #fff;
+$content-color: #fff;
+$nav-sub-link-color: #5A83FF;
+$theme-border-color: rgba(#5A83FF,.2);
+$footer-color: #fff;
+
+$link-color: #5A83FF;
+$link-hover-color: $primary;
+
+$nav-tabs-border-color: rgba($theme-border-color, 1);
+$nav-tabs-link-hover-border-color: rgba($theme-border-color, 1);
+$nav-tabs-link-active-border-color: rgba($theme-border-color, 1);
+$nav-tabs-link-active-bg: none;
+$nav-tabs-link-active-color: $primary;
+
+$modal-content-bg: $primary-dark;
+$modal-content-border-color: $primary-hover;
+
+$pagination-border-color: $theme-border-color;
+$pagination-hover-border-color: $theme-border-color;
+$pagination-hover-border-color: $theme-border-color;
+$pagination-bg: $widget-bg;
+$pagination-hover-bg: $primary-hover;
+$pagination-color: $content-color;
+
+$card-bg: $primary-dark;
+
+$jumbotron-bg: $primary-hover;
+
+$thumbnail-bg: $primary-hover;
+$thumbnail-border-color: $theme-border-color;
+
+$input-bg: $primary-hover;
+$input-bg-disabled: $primary-hover;
+$input-border-color: $theme-border-color;
+$input-color: #fff;
+$input-group-addon-bg: $widget-bg;

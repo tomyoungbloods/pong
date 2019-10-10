@@ -11,4 +11,8 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index'); // Go to home
+
+Route::get('/new/player', 'PlayerController@create'); // Create Player
+
+Route::post('/new/files/avatars', 'FilesController@create'); //Create avatar

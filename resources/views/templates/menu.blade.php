@@ -8,7 +8,7 @@
         </li>
         <li class="menu-item-has-children"><a href="/"><i class="list-icon feather feather-check"></i> <span class="hide-menu">Start Competitie</span></a>
         </li>
-        <li class="menu-item-has-children"><a href="/new/player"><i class="list-icon feather feather-plus"></i> <span class="hide-menu">Voeg speler toe</span></a>
+        <li class="menu-item-has-children"><a href="{{ route('players.new') }}"><i class="list-icon feather feather-plus"></i> <span class="hide-menu">Voeg speler toe</span></a>
     </ul>
     <!-- /.side-menu -->
 </nav>

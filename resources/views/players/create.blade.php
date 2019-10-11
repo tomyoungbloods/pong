@@ -12,10 +12,10 @@
         <h1>Voeg een speler toe</h1>
     </div>
         <div class="row">
-            <form method="POST" action="/create/avatars" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('players.new') }}" enctype="multipart/form-data">
             @csrf
                 <div>
-                    <input type="text" name="naam" placeholder="Naam Speler">
+                    <input type="text" name="name" placeholder="Naam Speler">
                 </div>
                     {{-- <div class="form-group">
                         <input type="file" name="avatar">

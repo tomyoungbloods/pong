@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             ['name' => 'Bas', 'created_at' => '2019-09-10 00:00:00'],
         ];
 
-        DB::table('spelers')->insert($players);
+        DB::table('players')->insert($players);
 
         $user = ['name' => 'Tom', 'email' => 'tom.jongbloets@grizzlymarketing.nl', 'password' => Hash::make('Welkom1')];
 

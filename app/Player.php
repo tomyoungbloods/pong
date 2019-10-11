@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
-    protected $fillable = [
+    // protected $fillable = [
 
-        "naam", "punten", "aanwezig", 'profile_image'
+    //     "name"
         
-    ];
+    // ];
 }

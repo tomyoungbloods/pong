@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Player;
 
-class PlayerController extends Controller
+class PlayersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +24,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        return view('players.create');
     }
 
     /**
@@ -34,24 +35,13 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        $player = new speler();
+        $player = new Player();
 
         $player->name = request('name');
   
         $player->save();
   
-        return redirect ('/');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('home');
     }
 
     /**
@@ -62,7 +52,9 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::find($id);
+
+        return view('players.edit', compact('player'));
     }
 
     /**
@@ -74,7 +66,13 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $player = Player::find($id);
+
+        $player->name = request('name');
+
+        $player->save();
+
+        return redirect()->route('home');
     }
 
     /**

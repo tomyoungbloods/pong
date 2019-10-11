@@ -19,6 +19,7 @@ Route::group(['prefix' => 'players'], function() {
     Route::post('/new', 'PlayersController@store'); // Store Player
     Route::get('/edit/{id}', 'PlayersController@edit')->name('players.edit'); // Show edit Player form example: route('players.edit', ['id' => $player->id])
     Route::patch('/edit/{id}', 'PlayersController@update'); // Sla het bewerkte project opl
+    Route::delete('/edit/{id}', 'PlayersController@destroy')->name('players.destroy');;
 });
 
 Route::post('/new/files/avatars', 'FilesController@create'); //Create avatar

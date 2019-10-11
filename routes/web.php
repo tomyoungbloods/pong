@@ -14,7 +14,7 @@
 Route::get('/', 'PagesController@index')->name('home'); // Go to home
 
 Route::group(['prefix' => 'players'], function() {
-    Route::get('/', 'PlayersController@index')->middleware('auth')->name('players.index'); // Show all Player
+    Route::get('/', 'PlayersController@index')->name('players.index'); // Show all Player 
     Route::get('/new', 'PlayersController@create')->name('players.new'); // Create Player
     Route::post('/new', 'PlayersController@store'); // Store Player
     Route::get('/edit/{id}', 'PlayersController@edit')->name('players.edit'); // Show edit Player form example: route('players.edit', ['id' => $player->id])

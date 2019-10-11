@@ -14,7 +14,12 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //
+        $players = Player::all();
+
+        $array = [ 
+            'players' => $players,
+        ]; 
+        return view('players.players')->with($array);
     }
 
     /**
@@ -36,9 +41,7 @@ class PlayersController extends Controller
     public function store(Request $request)
     {
         $player = new Player();
-
         $player->name = request('name');
-  
         $player->save();
   
         return redirect()->route('home');

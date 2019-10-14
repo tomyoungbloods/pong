@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Player;
+use App\Http\Controllers\FilesController;
 
 class PlayersController extends Controller
 {
@@ -43,6 +44,15 @@ class PlayersController extends Controller
         $player = new Player();
         $player->name = request('name');
         $player->save();
+
+        if($request->avatar) {
+            $file_data = [
+                'player_id' => $player->id,
+                'file' => $request->avatar,
+            ];
+    
+            FilesController::storeFromPlayerController($file_data);
+        }
   
         return redirect()->route('home');
     }

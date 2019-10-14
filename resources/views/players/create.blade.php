@@ -17,9 +17,9 @@
                 <div>
                     <input type="text" name="name" placeholder="Naam Speler">
                 </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <input type="file" name="avatar">
-                    </div> --}}
+                    </div>
                         <div>
                             <button type="submit">Maak een speler aan</button>
                     </div>

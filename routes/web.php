@@ -22,4 +22,7 @@ Route::group(['prefix' => 'players'], function() {
     Route::delete('/edit/{id}', 'PlayersController@destroy')->name('players.destroy');;
 });
 
-Route::post('/new/files/avatars', 'FilesController@create'); //Create avatar
+Route::group(['prefix' => 'files'], function() {
+    Route::get('/new', 'FilesController@create')->name('files.new'); //Create avatar
+    Route::post('/new', 'FilesController@store'); //Store avatar
+});

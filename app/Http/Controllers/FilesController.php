@@ -64,10 +64,8 @@ class FilesController extends Controller
         $random_str = Str::random(36);
         // Build filename
         $file_name = "{$random_str}.{$ext}";
-
         // Set foldername
         $folder_name = $file_data['player_id'];
-
         // Store file on disk
         $file->storeAs('public/' . $folder_name, $file_name);
         // Create File entity

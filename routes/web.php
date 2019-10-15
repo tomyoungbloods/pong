@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'PagesController@index')->name('home'); // Go to home
+
+
+Route::group([], function() {
+    Route::get('/', 'PagesController@index')->name('home'); // Go to home
+});
 
 Route::group(['prefix' => 'players'], function() {
     Route::get('/', 'PlayersController@index')->name('players.index'); // Show all Player 
@@ -26,3 +30,9 @@ Route::group(['prefix' => 'files'], function() {
     Route::get('/new', 'FilesController@create')->name('files.new'); //Create avatar
     Route::post('/new', 'FilesController@store'); //Store avatar
 });
+
+Route::group(['prefix' => 'points'], function() {
+    Route::get('/new', 'PointsController@create')->name('points.new'); //Create points
+    Route::post('/new', 'PointsController@store'); //Store points
+});
+

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Player;
-use App\File;
 use App\Point;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 
-class PagesController extends Controller
+class PointsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +14,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $players = Player::all();
-
-        foreach($players as $player) {
-            $player->avatar_url = $player->avatar_url;
-          }
-        
-        return view('pages.index')->withPlayers($players);
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class PagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Point  $point
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Point $point)
     {
         //
     }
@@ -61,10 +52,10 @@ class PagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Point  $point
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Point $point)
     {
         //
     }
@@ -73,10 +64,10 @@ class PagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Point  $point
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Point $point)
     {
         //
     }
@@ -84,10 +75,10 @@ class PagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Point  $point
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Point $point)
     {
         //
     }

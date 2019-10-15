@@ -16,7 +16,10 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->boolean('checked')->default(false);
+            $table->string('profile_image')->nullable(); // our profile image field
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

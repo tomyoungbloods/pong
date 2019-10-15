@@ -20,6 +20,7 @@ class PlayersController extends Controller
         $array = [ 
             'players' => $players,
         ]; 
+
         return view('players.players')->with($array);
     }
 

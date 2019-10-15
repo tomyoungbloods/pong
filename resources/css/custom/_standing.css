@@ -1,0 +1,134 @@
+.row.podium {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+
+.naambox.checked-in {
+  background: green; }
+
+.rank-thumb {
+  width: 75px;
+  margin-right: 10px; }
+  .rank-thumb img {
+    border-radius: 10px; }
+
+.ranking {
+  padding: 15px;
+  background-color: #16191C;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+li, ul {
+  list-style-type: none; }
+
+.podium-plaats {
+  background: #16191C;
+  padding: 20px;
+  font-family: "Montserrat";
+  color: #767676;
+  font-weight: 700;
+  border-radius: 0px 0px 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+
+.naam {
+  font-size: 34px;
+  font-family: "Montserrat";
+  color: #fff;
+  font-weight: 700;
+  width: 70%; }
+
+.punten {
+  width: 50%;
+  text-align: right;
+  font-size: 36px;
+  font-weight: 900; }
+
+.naam-ranking {
+  font-size: 24px;
+  font-family: "Montserrat";
+  color: #fff;
+  font-weight: 700;
+  width: 70%; }
+
+.punten-ranking {
+  width: 50%;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: right;
+  color: #767676; }
+
+.widget-holder.podium {
+  background: #1B1F22;
+  border-radius: 10px; }
+
+.podium-image > img {
+  height: 200px;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 10px 10px 0px 0px; }
+
+div#podium-1 {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+  max-width: 43.33333%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 43.33333%;
+  flex: 0 0 43.33333%; }
+  div#podium-1 .podium-image > img {
+    height: 300px; }
+
+div#podium-2 {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 0;
+  order: 0;
+  max-width: 28.33333%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 28.33333%;
+  flex: 0 0 28.33333%; }
+
+div#podium-3 {
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
+  max-width: 28.33333%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 28.33333%;
+  flex: 0 0 28.33333%; }
+
+div#opstelling-1, div#opstelling-2, div#opstelling-3, div#opstelling-4 {
+  background: green !important;
+  margin-bottom: 50px; }
+
+div#opstelling-5 {
+  background: orange !important; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .navbar-brand-dark .navbar-brand {
+    margin-left: 20px; }
+  .podium-plaats {
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline; }
+  .punten {
+    font-size: 18px; } }
+
+/*# sourceMappingURL=_standing.css.map */

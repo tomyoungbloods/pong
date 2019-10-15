@@ -11,6 +11,9 @@ CUSTOM
   -ms-flex-align: end;
   align-items: flex-end; }
 
+.naambox.checked-in {
+  background: green; }
+
 .rank-thumb {
   width: 75px;
   margin-right: 10px; }
@@ -133,6 +136,9 @@ div#opstelling-5 {
   .punten {
     font-size: 18px; } }
 
+.naambox.checked-in {
+  background: green; }
+
 button.btn.btn-ping-pong {
   background-color: #4170FF;
   border-radius: 10px; }
@@ -147,7 +153,7 @@ button.btn.btn-ping-pong {
 button.btn.btn-ping-pong-alternatief {
   background-color: #eee;
   border-radius: 10px;
-  color: #16191C; }
+  color: black; }
   button.btn.btn-ping-pong-alternatief:hover {
     background-color: #ff3333; }
   button.btn.btn-ping-pong-alternatief a {
@@ -163,6 +169,12 @@ button.btn.btn-ping-pong-alternatief {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center; }
+
+.naambox.checked-in {
+  background: green; }
+
+body {
+  background: red; }
 
 .checkin-image-4col > img {
   -o-object-fit: cover;
@@ -224,6 +236,9 @@ label#naam-check {
   padding: 10px;
   background: #16191C;
   border-radius: 0px 0px 10px 10px; }
+
+.naambox.checked-in {
+  background: green; }
 
 /* Media Queries */
 /* Placeholder */

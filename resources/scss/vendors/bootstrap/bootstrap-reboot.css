@@ -26,7 +26,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -127,14 +127,14 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #5A83FF;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #fff;
   text-decoration: underline;
 }
 

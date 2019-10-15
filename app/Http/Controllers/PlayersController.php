@@ -113,12 +113,13 @@ class PlayersController extends Controller
 
     public function checkInPlayer(Request $request) {
         $player = Player::find($request->id);
+
         if($player->checked){ 
             $player->checked = 0;
-          } else {
+        } else {
             $player->checked = 1; 
-            }
-            $player->save();
+        }
+        $player->save();
 
         $array = [
             'message' => 'Player check-in status changed'

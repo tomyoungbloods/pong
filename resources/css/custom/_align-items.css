@@ -5,3 +5,9 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center; }
+
+.naambox.checked-in {
+  background: green; }
+
+body {
+  background: red; }

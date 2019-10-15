@@ -1,4 +1,4 @@
-
+/*
 * Name:        Admin Html
 * Written by:   Unifato - (http://unifato.com)
 * Version:      1.0.0
@@ -79,7 +79,7 @@ body.rtl .pace {
 .pace-activity:before {
   -webkit-animation: ball1 1s infinite;
           animation: ball1 1s infinite;
-  background-color: #cb2025;
+  background-color: green;
   -webkit-box-shadow: 30px 0 0 #f8b334;
           box-shadow: 30px 0 0 #f8b334;
   margin-bottom: 10px;
@@ -198,4 +198,4 @@ body.rtl .pace {
     margin-top: 0;
   }
 }
-/*# sourceMappingURL=pace.css.map
+/*# sourceMappingURL=pace.css.map */

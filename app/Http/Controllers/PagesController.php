@@ -7,6 +7,7 @@ use App\File;
 use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
@@ -100,7 +101,58 @@ class PagesController extends Controller
     public function checkIn() {
         // Retrieve players
         $players = Player::orderBy('name')->get();
-        // Return
+        //Alle spelers waarvan de aanwezig waarde op 1 staat wordt verpakt in een variabele genaamd aanwezig
+        $checkedin = Player::where('checked', '1')->get();
+        // Shuffle de spelers
+        $checkedin = $checkedin->shuffle();
+        //Tel de inhoud van de count array
+        $countArray = count($checkedin);
+        $i = 0;
+        //Hier komt startpositie berekening
+        foreach($checkedin as $player) {
+            if($i < 4) {
+            $player->start_position = 0;
+            } else {
+            $player->start_position = $i - 3;
+            }        
+            $i++;
+        }
+
+        //Verzamel data
+        $checked_in_players = [ 
+        'players' => $players,
+        'checkedin' => $checkedin->shuffle(),
+        'count_before' => $countArray     
+        ]; 
+
+        //Verzamelen info uit sessie in een array
+        $game_info = [
+        'checkedin' => $checked_in_players['checkedin'],
+        'count_before' => $checked_in_players['count_before'],
+        ];
+
+        //Hiermee plaats hij de uitkomsten van de 'peoples' shuffle in een sessie
+        Session::put('game_info', $game_info);
+        //Stuur checked in players mee
         return view('pages.check-in', compact('players'));
+        }
+
+        public function knockOut()
+    {       
+        $checkedin = Player::where('checked', '1')->get();
+        //Tel de inhoud van de count array
+        $countArray = count($checkedin);
+    
+        //Verzamelen info uit sessie in een array
+        $game_info = [
+        'checkedin' => $checkedin->shuffle(),
+        'count_before' => $countArray,
+        ];
+
+        //Hiermee plaats hij de uitkomsten van de 'peoples' shuffle in een sessie
+        Session::put('game_info', $game_info);
+
+        dd($game_info);
+        return view('pages.knock-out');
     }
 }

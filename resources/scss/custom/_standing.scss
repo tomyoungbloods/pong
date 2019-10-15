@@ -7,7 +7,7 @@
     background: green;
 } 
 
-.rank-thumb {
+.rank-thumb { 
     width: 75px;
     margin-right: 10px;
     img{
@@ -19,7 +19,7 @@
 
 .ranking {
     padding: 15px;
-    background-color: $mitodark;
+    background-color: #16191C;
     border-radius: 10px;
     display: flex;
     
@@ -30,10 +30,10 @@ li, ul{
 }
 
 .podium-plaats {
-    background: $mitodark;
+    background: #16191C;
     padding: 20px;
     font-family: "Montserrat" ;
-    color: $punten;
+    color: #767676;
     font-weight: 700;
     border-radius: 0px 0px 10px 10px;
     display: flex;
@@ -68,7 +68,7 @@ li, ul{
     font-size: 24px;
     font-weight: 900;
     text-align: right;
-    color: $punten;
+    color: #767676;
 }
 
 .widget-holder.podium{

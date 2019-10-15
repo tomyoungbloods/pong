@@ -101,4 +101,29 @@ class PlayersController extends Controller
         $player->delete();
         return redirect('/'); 
     }
+
+    public function getAllPlayers() {
+        // Retrieve 
+        $players = Player::orderBy('name')->get();
+        // Get view
+        $view = view('players.get-all', compact('players'));
+        // Return view
+        return $view->render();
+    }
+
+    public function checkInPlayer(Request $request) {
+        $player = Player::find($request->id);
+        if($player->checked){ 
+            $player->checked = 0;
+          } else {
+            $player->checked = 1; 
+            }
+            $player->save();
+
+        $array = [
+            'message' => 'Player check-in status changed'
+        ];
+        // return response
+        return response()->json($array);
+    }
 }

@@ -91,4 +91,16 @@ class PagesController extends Controller
     {
         //
     }
+
+    /**
+     * Show check-in page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkIn() {
+        // Retrieve players
+        $players = Player::orderBy('name')->get();
+        // Return
+        return view('pages.check-in', compact('players'));
+    }
 }

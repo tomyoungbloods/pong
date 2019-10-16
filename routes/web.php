@@ -17,6 +17,7 @@ Route::group([], function() {
     Route::get('/', 'PagesController@index')->name('home'); // Go to home
     Route::get('/check-in', 'PagesController@checkIn')->name('check-in');
     Route::get('/knock-out', 'PagesController@knockOut')->name('knock-out');
+    Route::patch('/knock-out/{id}', 'PagesController@updateKnockout'); // Update speler in de game
 });
 
 Route::group(['prefix' => 'players'], function() {

@@ -8,6 +8,7 @@ use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
+use App\Traits\UploadTrait;
 
 class PagesController extends Controller
 {
@@ -131,8 +132,6 @@ class PagesController extends Controller
         'count_before' => $checked_in_players['count_before'],
         ];
 
-        //Hiermee plaats hij de uitkomsten van de 'peoples' shuffle in een sessie
-        Session::put('game_info', $game_info);
         //Stuur checked in players mee
         return view('pages.check-in', compact('players'));
         }
@@ -142,17 +141,74 @@ class PagesController extends Controller
         $checkedin = Player::where('checked', '1')->get();
         //Tel de inhoud van de count array
         $countArray = count($checkedin);
-    
+
+        $points = [];
+        foreach($checkedin as $player) {
+            $points[] = $player->name . ' heeft ' . $player->total_points . ' punten.';
+        }
+
         //Verzamelen info uit sessie in een array
         $game_info = [
         'checkedin' => $checkedin->shuffle(),
-        'count_before' => $countArray,
+        'countArray' => $countArray,
+        'points' => $points
         ];
 
         //Hiermee plaats hij de uitkomsten van de 'peoples' shuffle in een sessie
         Session::put('game_info', $game_info);
+        $sessie  = Session::get('game_info');
 
-        dd($game_info);
-        return view('pages.knock-out');
+
+        $points = PointsController::knockOutFromPlayerController($game_info);
+
+        $data = [
+            'checkedin' => $checkedin->shuffle(),
+            'countArray' => $countArray,
+            'points' => $points,
+        ];
+        return view('pages.knock-out', with($data));
+    }
+
+    public function updateKnockout(Request $request, Player $player, $id)
+    {    
+        // Retrieve player
+        $player = Player::find($id);
+        //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
+        $sessie  = Session::get('game_info')['checkedin'];
+        $start_checked_in = Session::get('game_info')['countArray'];
+        //Maak alvast een array aan voor de geupdate peoples
+        $updated_peoples = [];
+        //Start de functie aanwezig
+        if(request('checked')){
+          $player->checked = 1;
+        } else {
+          $player->checked = 0; 
+          // Create new PlayerPoint
+        //   dd($request->all(), $player);
+          $point = new Point;
+          // Set PlayerPoint attributes
+          $point->points = $request->points;
+          $point->player_id = $player->id;
+          $point->save();
+          }
+       $player->save();
+
+       
+        // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array
+        foreach($sessie as $player_old) {
+           if($player_old->id != $player->id) 
+           {
+              $updated_peoples[] = $player_old;
+            }
+         }
+         $new_game_info = [
+           'peoples' => $updated_peoples,
+           'count_before' => $start_checked_in,
+         ];
+      //Gooi de sessie leeg en plaats de nieuwe game info erin
+      Session::flush('game_info');
+      Session::put('game_info', $new_game_info);
+      // Return $return
+      return back(); 
     }
 }

@@ -11,7 +11,7 @@ class Player extends Model
     /**
      * Get Point records associated with Player
      */
-    public function Points()
+    public function points()
     {
         return $this->hasMany('App\Point');
     }
@@ -24,7 +24,7 @@ class Player extends Model
     }
 
     protected function getTotalPoints() {
-        $points = $this->Points;
+        $points = $this->points;
         $total = 0;
         foreach($points as $point) {
             $total = $total + $point->points;

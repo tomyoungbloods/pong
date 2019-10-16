@@ -81,9 +81,7 @@ class PlayersController extends Controller
     public function update(Request $request, $id)
     {
         $player = Player::find($id);
-
         $player->name = request('name');
-
         $player->save();
 
         return redirect()->route('home');

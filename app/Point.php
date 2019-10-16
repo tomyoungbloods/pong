@@ -14,7 +14,7 @@ class Point extends Model
     protected $table = 'points';
 
     /**
-     * PlayerPoint belongs to Speler.
+     * PlayerPoint belongs to Player.
      */
     public function player()
     {

@@ -124,5 +124,7 @@ class PlayersController extends Controller
         ];
         // return response
         return response()->json($array);
+
+       
     }
 }

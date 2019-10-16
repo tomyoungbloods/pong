@@ -101,44 +101,19 @@ class PagesController extends Controller
      */
     public function checkIn() {
         // Retrieve players
-        $players = Player::orderBy('name')->get();
-        //Alle spelers waarvan de aanwezig waarde op 1 staat wordt verpakt in een variabele genaamd aanwezig
-        $checkedin = Player::where('checked', '1')->get();
-        // Shuffle de spelers
-        $checkedin = $checkedin->shuffle();
-        //Tel de inhoud van de count array
-        $countArray = count($checkedin);
-        $i = 0;
-        //Hier komt startpositie berekening
-        foreach($checkedin as $player) {
-            if($i < 4) {
-            $player->start_position = 0;
-            } else {
-            $player->start_position = $i - 3;
-            }        
-            $i++;
-        }
-
-        //Verzamel data
-        $checked_in_players = [ 
-        'players' => $players,
-        'checkedin' => $checkedin->shuffle(),
-        'count_before' => $countArray     
-        ]; 
-
-        //Verzamelen info uit sessie in een array
-        $game_info = [
-        'checkedin' => $checked_in_players['checkedin'],
-        'count_before' => $checked_in_players['count_before'],
-        ];
+        // $players = Player::orderBy('name')->get();
+        
 
         //Stuur checked in players mee
-        return view('pages.check-in', compact('players'));
+        return view('pages.check-in');
         }
 
         public function knockOut()
-    {       
-        $checkedin = Player::where('checked', '1')->get();
+    {   
+        $count_before = Session::get('game_info')['count_before']; 
+        $sessie = Session::get('game_info')['checkedin'];
+
+        $checkedin = $sessie;
         //Tel de inhoud van de count array
         $countArray = count($checkedin);
 
@@ -149,33 +124,49 @@ class PagesController extends Controller
 
         //Verzamelen info uit sessie in een array
         $game_info = [
-        'checkedin' => $checkedin->shuffle(),
+        'checkedin' => $checkedin,
         'countArray' => $countArray,
-        'points' => $points
+        'points' => $points,
+        'count_before' => $count_before
         ];
-
-        //Hiermee plaats hij de uitkomsten van de 'peoples' shuffle in een sessie
-        Session::put('game_info', $game_info);
-        $sessie  = Session::get('game_info');
-
 
         $points = PointsController::knockOutFromPlayerController($game_info);
 
         $data = [
-            'checkedin' => $checkedin->shuffle(),
+            'checkedin' => $checkedin,
             'countArray' => $countArray,
             'points' => $points,
         ];
         return view('pages.knock-out', with($data));
+
+
+        // If Session exists, flush it
+        $checkedin = Player::where('checked', '1')->get();
+
+        
+
+        // if(Session::has('game_info')) {
+        //     $players = Session::get('game_info')['checkedin'];
+        //     Session::flush('game_info');
+        // } else {
+        //     // Retrieve Players
+        //     $players = Player::where('checked', 1)->get()->shuffle();
+        // }
+        // dd($players);
+        //
+
+        // Set Session
+        // Session::put('game_info', $game_info);
     }
 
     public function updateKnockout(Request $request, Player $player, $id)
-    {    
+    {   
         // Retrieve player
         $player = Player::find($id);
         //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
         $sessie  = Session::get('game_info')['checkedin'];
-        $start_checked_in = Session::get('game_info')['countArray'];
+        $start_checked_in = Session::get('game_info')['count_before'];
+
         //Maak alvast een array aan voor de geupdate peoples
         $updated_peoples = [];
         //Start de functie aanwezig
@@ -194,6 +185,7 @@ class PagesController extends Controller
        $player->save();
 
        
+
         // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array
         foreach($sessie as $player_old) {
            if($player_old->id != $player->id) 

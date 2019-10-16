@@ -112,7 +112,7 @@ class PointsController extends Controller
           }
           else { $bonus = 0; }
     
-          $points =  $sessie['countArray'] - $active_players_count + $bonus;
+          $points =  $sessie['count_before'] - $active_players_count + $bonus;
 
           return $points;
 

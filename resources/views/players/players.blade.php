@@ -15,7 +15,7 @@
             <div class="row">
                 <ul>
                     @foreach ($players as $player)
-                <li><a href ="/edit/{{$player->id}}">{{$player->name}}</a></li>
+                <li><a href ="{{route("players.edit", ["id"=>$player->id])}}">{{$player->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

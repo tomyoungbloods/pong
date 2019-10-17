@@ -22,7 +22,7 @@
                                 <div class="checkin-plaats">
                                     <div class="checkin-naam">
                                         <div class="naambox" id="opstelling-{{ $loop->iteration }}">
-                                            {{$player->name}}{{$points}}
+                                            {{$player->name}}{{ $points - $player->start_position }}
                                         </div> 
                                     </div> 
                                 </div>
@@ -64,8 +64,7 @@
         </div>
     </div>
         <div class="row">
-        Aantal spelers vooraf: 
-        Aantal spelers nu: 
+        Aantal spelers nu: {{$active_players_count}}
         </div>
 </div>
 </div>

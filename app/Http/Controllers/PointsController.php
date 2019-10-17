@@ -94,9 +94,12 @@ class PointsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public static function knockOutFromPlayerController($sessie){
-        // dd($sessie);
 
-        $active_players_count = count($sessie['checkedin']);
+
+        $players =  $sessie['checkedin'];
+
+        $active_players_count = count($sessie['checkedin']); 
+        $points = 'leeg';
 
         if($active_players_count == 3) {
             // 3rd place bonus
@@ -111,8 +114,10 @@ class PointsController extends Controller
             $bonus = 3;
           }
           else { $bonus = 0; }
-    
-          $points =  $sessie['count_before'] - $active_players_count + $bonus;
+
+          foreach($players as $player) {
+            $points = $player->start_position + 2 - $active_players_count + $bonus;
+        }
 
           $dataSession = [
             'active_players_count' => $active_players_count,

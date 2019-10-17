@@ -114,10 +114,10 @@ class PagesController extends Controller
         $i = 0;
         //Hier komt startpositie berekening
         foreach($checkedin as $player) {
-            if($i < 4) {
+            if($i < 2) {
             $player->start_position = 0;
             } else {
-            $player->start_position = $i - 3;
+            $player->start_position = $i - 1;
             }        
             $i++;
         }
@@ -125,7 +125,7 @@ class PagesController extends Controller
         //Verzamel data
         $checked_in_players = [ 
         'players' => $players,
-        'checkedin' => $checkedin->shuffle(),
+        'checkedin' => $checkedin,
         'count_before' => $countArray     
         ]; 
 
@@ -154,17 +154,29 @@ class PagesController extends Controller
         //Tel de inhoud van de count array
         $countArray = count($checkedin);
 
-        $points = [];
+        // $points = [];
+        // foreach($checkedin as $player) {
+        //     $points[] = $player->name . ' heeft ' . $player->total_points . ' punten.';
+        // }
+        // Set counter
+        $i = 0;
+        // Set start position
         foreach($checkedin as $player) {
-            $points[] = $player->name . ' heeft ' . $player->total_points . ' punten.';
-        }
+            if($i < 2) {
+              $player->start_position = 0;
+            } else {
+              $player->start_position = $i - 1;
+            }        
+            $i++;
+          }
 
         //Verzamelen info uit sessie in een array
         $game_info = [
-            'checkedin' => $checkedin->shuffle(),
+            'checkedin' => $checkedin,
             'count_before' => $countArray,
-            'points' => $points
+            // 'points' => $points
         ];
+
 
         //Hiermee plaats hij de uitkomsten van de 'gameinfo' shuffle in een sessie
         Session::put('game_info', $game_info);
@@ -184,7 +196,6 @@ class PagesController extends Controller
             'active_players_count' => $dataSession['active_players_count'],
             'points' => $dataSession['points'],
         ];
-
 
         return view('pages.knock-out', with($data));
     }

@@ -24,7 +24,7 @@
     <script data-pace-options='{ "ajax": false, "selectors": [ "img" ]}' src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 </head>
 
-<body class="sidebar-dark sidebar-collapse content-dark navbar-brand-dark right-sidebar-dark">
+<body class="sidebar-dark sidebar-collapse content-dark navbar-brand-dark right-sidebar-dark" onload="startTime()">
     <div id="wrapper" class="wrapper">
         <!-- HEADER & TOP NAVIGATION -->
         <nav class="navbar">
@@ -35,8 +35,9 @@
                     <img class="logo-collapse" alt="" src="{{ asset('img/logo_transparant_wit.png') }}">
                     <!-- <p>BonVue</p> -->
                 </a>
+                
             </div>
-           
+            <div id="rolex"></div>
     <!-- /.navbar-nav -->
     </nav>
     <!-- /.navbar -->
@@ -245,6 +246,7 @@
     @stack('footer-scripts')
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/time.js') }}"></script>
 </body>
 
 </html>

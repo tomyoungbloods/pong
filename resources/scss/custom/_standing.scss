@@ -3,9 +3,17 @@
     align-items: flex-end;
 }
 
-.naambox.checked-in {
-    background: green;
-} 
+
+
+#mainrank1, #mainrank2, #mainrank3
+{
+ display: none;
+}
+div#top1, div#top2, div#top3{
+    .rank-thumb{
+        width: 100px;
+    }
+}
 
 div#top1 .place{
     background: #E3B524;
@@ -26,8 +34,8 @@ div#top1 .place, div#top2 .place, div#top3 .place
     font-family: "Montserrat";
     color: #242424;
     font-weight: 900;
-    min-width: 44px;
-    max-width: 44px;
+    min-width: 33px;
+    max-width: 33px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +43,16 @@ div#top1 .place, div#top2 .place, div#top3 .place
 
 .place {
     padding: 10px;
-    border-radius: 10px 0px 0px 10px;;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 24px;
+    font-family: "Montserrat";
+    color: #eee;
+    font-weight: 900;
+    min-width: 33px;
+    max-width: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -48,18 +65,19 @@ div#top1 .place, div#top2 .place, div#top3 .place
 }
 
 .ranking {
-    background-color: #16191C;
+    background-color: #121212;
     border-radius: 10px;
     display: flex;
     
 }
+
 
 li, ul{
     list-style-type:none;
 }
 
 .podium-plaats {
-    background: #16191C;
+    background: #121212;
     padding: 20px;
     font-family: "Montserrat" ;
     color: #767676;
@@ -98,6 +116,10 @@ li, ul{
     font-weight: 900;
     text-align: right;
     color: #767676;
+    padding-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .widget-holder.podium{

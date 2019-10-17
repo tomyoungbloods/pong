@@ -18,12 +18,12 @@
                     <div>
                         <input type="text" name="name" placeholder="Naam Speler" value="{{ $player->name }}">
                     </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <input type="file" name="avatar">
-                        </div> --}}
-                        <div>
-                            <button class="btn btn-ping-pong" type="submit">Maak een speler aan</button>
                         </div>
+                            <div>
+                                <button class="btn btn-ping-pong" type="submit">Maak een speler aan</button>
+                            </div>
             </form>
         </div>
         <div class="row">
@@ -32,11 +32,8 @@
                 @csrf
                 <button type="submit" class="btn btn-ping-pong-alternatief" >Delete</button>
             </form>
-        </div>
-            
-            
-            
-        
+</div>
+
 </div>
 
 

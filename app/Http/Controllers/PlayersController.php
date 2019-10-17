@@ -84,6 +84,15 @@ class PlayersController extends Controller
         $player->name = request('name');
         $player->save();
 
+        if($request->avatar) {
+            $file_data = [
+                'player_id' => $player->id,
+                'file' => $request->avatar,
+            ];
+    
+            FilesController::updateFromPlayerController($file_data);
+        }
+
         return redirect()->route('home');
     }
 

@@ -6,24 +6,26 @@
 @section('title', 'Standing')
 @section('description', '')
 @section('content')
-<div class="container">
-    <div class="row podium"> 
+    <div class="row">
         @foreach ($topOfTable as $player)
-            <div id="podium-{{ $loop->iteration }}" class="col-sm-4 podium">
-                <div class="widget-holder">
-                    <div class="podium-image">
-                    <img src="{{ $player['avatar_url'] }}">
-                    </div>
-                        <div class="podium-plaats">
-                            <div class="naam">
-                            {{$player['name']}}
+        <div class="col-md-12" id="top{{ $loop->iteration }}">
+            <div class="widget-holder">
+                <div class="ranking-box">
+                    <div class="ranking">
+                        <div class="place">{{ $loop->iteration }}</div>
+                            <div class="naam-ranking"> 
+                                <div class="rank-thumb">
+                                    <img src="{{ $player['avatar_url'] }}">
+                                </div>
+                                {{$player['name']}}
                             </div>
-                                <div class="punten">
+                                <div class="punten-ranking">
                                 {{$player['total_points']}}PTS
                                 </div>
-                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
     <div class="row">

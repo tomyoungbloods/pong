@@ -15,7 +15,7 @@
             <div class="row">
                 <ul>
                     @foreach ($players as $player)
-                <li><a href ="players/edit/{{$player->id}}">{{$player->name}}</a></li>
+                <li><a href ="/edit/{{$player->id}}">{{$player->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

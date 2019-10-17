@@ -51,29 +51,45 @@ class FilesController extends Controller
      */
     public static function storeFromPlayerController($file_data)
     {
-        //$file->store('public/' . $speler_id);
-        $file = $file_data['file'];
-        $ext = $file->guessClientExtension();
-        // Get original file name
-        $orig_name = $file->getClientOriginalName();
-        // Turn original name into array
-        $nameparts = explode('.', $orig_name);
-        // Get file extension
-        $ext = end($nameparts);
-        // Set random string for file name
-        $random_str = Str::random(36);
-        // Build filename
-        $file_name = "{$random_str}.{$ext}";
+       $player_id = $file_data['player_id'];       
+
+       // Get uploaded file
+       $file = $file_data['file'];
+       // Get original file name
+       $orig_name = $file->getClientOriginalName();
+       // Turn original name into array
+       $nameparts = explode('.', $orig_name);
+       // Get file extension
+       $ext = end($nameparts);
+       // Set random string for file name
+       $random_str = Str::random(36);
+       // Build filename
+       $file_name = "{$random_str}.{$ext}";
+
+       // Check if avatar already exists
+       if(File::where('player_id', $player_id)->exists()) {
+            // Get File
+            $old_file = File::where('player_id', $player_id)->first();
+            // Check if File exists on disk
+            if(Storage::exists('public/' . $old_file->folder_name . '/' . $old_file->file_name)) {
+                // Delete file on disk
+                Storage::delete('public/' . $old_file->folder_name . '/' . $old_file->file_name);
+            }
+            // Delete File instance
+            $old_file->delete();
+        }
         // Set foldername
-        $folder_name = $file_data['player_id'];
+        $folder_name = $player_id;
         // Store file on disk
         $file->storeAs('public/' . $folder_name, $file_name);
+
         // Create File entity
         $new_file = new File;
         // Set all File attributes
         $new_file->file_name = $file_name;
         $new_file->folder_name = $folder_name;
-        $new_file->player_id = $file_data['player_id'];
+        $new_file->player_id = $player_id;
+        // Save File
         $new_file->save();
     }
 
@@ -95,18 +111,6 @@ class FilesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
     {
         //
     }

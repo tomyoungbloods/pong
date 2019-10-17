@@ -7,18 +7,47 @@
     background: green;
 } 
 
-.rank-thumb { 
-    width: 75px;
-    margin-right: 10px;
-    img{
-        border-radius: 10px;
-        
-    }
+div#top1 .place{
+    background: #E3B524;
     
 }
 
+div#top2 .place{
+    background: #A2A9B7;
+}
+
+
+div#top3 .place{
+    background: #DE9947;
+}
+div#top1 .place, div#top2 .place, div#top3 .place
+{
+    font-size: 24px;
+    font-family: "Montserrat";
+    color: #242424;
+    font-weight: 900;
+    min-width: 44px;
+    max-width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.place {
+    padding: 10px;
+    border-radius: 10px 0px 0px 10px;;
+}
+
+
+
+
+.rank-thumb { 
+    width: 75px;
+    margin-right: 10px;
+    height: 100%;
+}
+
 .ranking {
-    padding: 15px;
     background-color: #16191C;
     border-radius: 10px;
     display: flex;

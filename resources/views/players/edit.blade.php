@@ -18,9 +18,9 @@
                     <div>
                         <input type="text" name="name" placeholder="Naam Speler" value="{{ $player->name }}">
                     </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <input type="file" name="avatar">
-                        </div> --}}
+                        </div>
                         <div>
                             <button class="btn btn-ping-pong" type="submit">Maak een speler aan</button>
                         </div>

@@ -14,14 +14,42 @@ CUSTOM
 .naambox.checked-in {
   background: green; }
 
+div#top1 .place {
+  background: #E3B524; }
+
+div#top2 .place {
+  background: #A2A9B7; }
+
+div#top3 .place {
+  background: #DE9947; }
+
+div#top1 .place, div#top2 .place, div#top3 .place {
+  font-size: 24px;
+  font-family: "Montserrat";
+  color: #242424;
+  font-weight: 900;
+  min-width: 44px;
+  max-width: 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.place {
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px; }
+
 .rank-thumb {
   width: 75px;
-  margin-right: 10px; }
-  .rank-thumb img {
-    border-radius: 10px; }
+  margin-right: 10px;
+  height: 100%; }
 
 .ranking {
-  padding: 15px;
   background-color: #16191C;
   border-radius: 10px;
   display: -webkit-box;

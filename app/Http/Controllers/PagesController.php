@@ -23,9 +23,23 @@ class PagesController extends Controller
 
         foreach($players as $player) {
             $player->avatar_url = $player->avatar_url;
+            $player->total_points = $player->total_points;
           }
-        
-        return view('pages.index')->withPlayers($players);
+
+        //Sorteer aantal spelers op de behaalde punten
+        $players = collect($players->toArray())->sortByDesc('total_points');
+        //Pak de bovenste drie uit de collectie
+        $collection = collect($players->toArray())->sortByDesc('total_points')->take(3);
+        //De bovenste drie worden geplaatst in een variabele genaamd podium
+        $topOfTable = $collection->collect();
+
+        //Plaats alle data in een array
+        $array = [ 
+            'players' => $players,
+            'topOfTable' => $topOfTable,
+        ]; 
+
+        return view('pages.index')->with($array); 
     }
 
     /**
@@ -45,17 +59,6 @@ class PagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
@@ -101,19 +104,53 @@ class PagesController extends Controller
      */
     public function checkIn() {
         // Retrieve players
-        // $players = Player::orderBy('name')->get();
-        
-
-        //Stuur checked in players mee
-        return view('pages.check-in');
+        $players = Player::orderBy('name')->get();
+        //Alle spelers waarvan de aanwezig waarde op 1 staat wordt verpakt in een variabele genaamd aanwezig
+        $checkedin = Player::where('checked', '1')->get();
+        // Shuffle de spelers
+        $checkedin = $checkedin->shuffle();
+        //Tel de inhoud van de count array
+        $countArray = count($checkedin);
+        $i = 0;
+        //Hier komt startpositie berekening
+        foreach($checkedin as $player) {
+            if($i < 4) {
+            $player->start_position = 0;
+            } else {
+            $player->start_position = $i - 3;
+            }        
+            $i++;
         }
 
-        public function knockOut()
-    {   
-        $count_before = Session::get('game_info')['count_before']; 
-        $sessie = Session::get('game_info')['checkedin'];
+        //Verzamel data
+        $checked_in_players = [ 
+        'players' => $players,
+        'checkedin' => $checkedin->shuffle(),
+        'count_before' => $countArray     
+        ]; 
 
-        $checkedin = $sessie;
+        //Verzamelen info uit sessie in een array
+        $game_info = [
+        'checkedin' => $checked_in_players['checkedin'],
+        'count_before' => $checked_in_players['count_before'],
+        ];
+
+        // $session = Session::put('game_info')['countArray'];
+
+        //Stuur checked in players mee
+        return view('pages.check-in', compact('players'));
+        }
+
+        
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  
+     * @return \Illuminate\Http\Response
+     */
+    public function sessionBuilder()
+    {
+        $checkedin = Player::where('checked', '1')->get();
         //Tel de inhoud van de count array
         $countArray = count($checkedin);
 
@@ -124,49 +161,41 @@ class PagesController extends Controller
 
         //Verzamelen info uit sessie in een array
         $game_info = [
-        'checkedin' => $checkedin,
-        'countArray' => $countArray,
-        'points' => $points,
-        'count_before' => $count_before
+            'checkedin' => $checkedin->shuffle(),
+            'count_before' => $countArray,
+            'points' => $points
         ];
 
-        $points = PointsController::knockOutFromPlayerController($game_info);
+        //Hiermee plaats hij de uitkomsten van de 'gameinfo' shuffle in een sessie
+        Session::put('game_info', $game_info);
+        return redirect()->route("knock-out");
+    }
+
+    public function knockOut()
+    {
+        $session = Session::get('game_info');
+
+        $dataSession = PointsController::knockOutFromPlayerController($session);
+
+        $checkedin = Session::get('game_info')['checkedin'];
 
         $data = [
             'checkedin' => $checkedin,
-            'countArray' => $countArray,
-            'points' => $points,
+            'active_players_count' => $dataSession['active_players_count'],
+            'points' => $dataSession['points'],
         ];
+
+
         return view('pages.knock-out', with($data));
-
-
-        // If Session exists, flush it
-        $checkedin = Player::where('checked', '1')->get();
-
-        
-
-        // if(Session::has('game_info')) {
-        //     $players = Session::get('game_info')['checkedin'];
-        //     Session::flush('game_info');
-        // } else {
-        //     // Retrieve Players
-        //     $players = Player::where('checked', 1)->get()->shuffle();
-        // }
-        // dd($players);
-        //
-
-        // Set Session
-        // Session::put('game_info', $game_info);
     }
 
     public function updateKnockout(Request $request, Player $player, $id)
-    {   
+    {    
         // Retrieve player
         $player = Player::find($id);
         //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
         $sessie  = Session::get('game_info')['checkedin'];
         $start_checked_in = Session::get('game_info')['count_before'];
-
         //Maak alvast een array aan voor de geupdate peoples
         $updated_peoples = [];
         //Start de functie aanwezig
@@ -174,8 +203,6 @@ class PagesController extends Controller
           $player->checked = 1;
         } else {
           $player->checked = 0; 
-          // Create new PlayerPoint
-        //   dd($request->all(), $player);
           $point = new Point;
           // Set PlayerPoint attributes
           $point->points = $request->points;
@@ -185,7 +212,6 @@ class PagesController extends Controller
        $player->save();
 
        
-
         // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array
         foreach($sessie as $player_old) {
            if($player_old->id != $player->id) 
@@ -194,7 +220,7 @@ class PagesController extends Controller
             }
          }
          $new_game_info = [
-           'peoples' => $updated_peoples,
+           'checkedin' => $updated_peoples,
            'count_before' => $start_checked_in,
          ];
       //Gooi de sessie leeg en plaats de nieuwe game info erin

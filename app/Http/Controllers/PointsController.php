@@ -94,7 +94,7 @@ class PointsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public static function knockOutFromPlayerController($sessie){
-
+        // dd($sessie);
 
         $active_players_count = count($sessie['checkedin']);
 
@@ -114,7 +114,12 @@ class PointsController extends Controller
     
           $points =  $sessie['count_before'] - $active_players_count + $bonus;
 
-          return $points;
+          $dataSession = [
+            'active_players_count' => $active_players_count,
+            'points' => $points,
+          ];
+
+          return $dataSession;
 
     }
 }

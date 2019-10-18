@@ -7,7 +7,7 @@
 @section('description', '')
 @section('content')
 @php ($i = 0)
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         @php ($i = 0)
         @foreach($checkedin as $player)

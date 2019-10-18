@@ -11,18 +11,18 @@
     <div class="row">
         @php ($i = 0)
         @foreach($checkedin as $player)
-        @if($i < 5)
+        @if($i < 3)
             <div class="col-3">
                 <div class="widget-holder">
                         <div class="checkin-plaats">
-                                <a href="#" data-id="{{$player->id}}" data-points="{{ $points - $player->start_position }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
+                                <a href="#" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
                                 <div class="checkin-image-4col">
                                     <img src="{{ $player['avatar_url'] }}">
                                 </div>
                                 <div class="checkin-plaats">
                                     <div class="checkin-naam">
                                         <div class="naambox" id="opstelling-{{ $loop->iteration }}">
-                                            {{$player->name}}{{ $points - $player->start_position }}
+                                            {{$player->name}} {{ $player->point_count }}
                                         </div> 
                                     </div> 
                                 </div>
@@ -46,13 +46,13 @@
                         <p>Klopt dit?</p>
                     </div>
                     <div class="modal-footer">
-                        <form id="exit-form" action=""  value="{{$points}}" method="POST">
+                        <form id="exit-form" action=""  value="{{$player->point_count}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" id="exit-points-val" name="points">
                             <button type="submit" class="btn btn-danger ripple text-left">Ja, afmelden</button>
                         </form>
-                        <button type="button" class="btn btn-outline-secondary ripple text-left" data-dismiss="modal"><input name="points" type="hidden" value="{{$points}}">Annuleren</button>
+                        <button type="button" class="btn btn-outline-secondary ripple text-left" data-dismiss="modal"><input name="points" type="hidden" value="{{$player->point_count}}">Annuleren</button>
                         <li>
                             
                         </li>

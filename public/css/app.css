@@ -168,12 +168,14 @@ div#podium-3 {
   -ms-flex: 0 0 28.33333%;
   flex: 0 0 28.33333%; }
 
-div#opstelling-1, div#opstelling-2, div#opstelling-3, div#opstelling-4 {
-  background: green !important;
+div#opstelling-1, div#opstelling-2 {
+  background: #FDD50B !important;
+  color: #121212;
   margin-bottom: 50px; }
 
-div#opstelling-5 {
-  background: orange !important; }
+div#opstelling-3 {
+  background: #16191C !important;
+  color: #fff; }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .navbar-brand-dark .navbar-brand {
@@ -195,6 +197,9 @@ div#opstelling-5 {
 .naambox.checked-in {
   background: #FDD50B !important;
   color: #212121; }
+
+.modal-body {
+  color: #fff; }
 
 button.btn.btn-ping-pong {
   background-color: #FDD50B;

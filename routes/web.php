@@ -10,6 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['prefix' => 'players'], function() {
+        Route::get('/', 'PlayersController@index')->name('players.index'); // Show all Player 
+        Route::get('/edit/{id}', 'PlayersController@edit')->name('players.edit'); // Show edit Player form example: route('players.edit', ['id' => $player->id])
+        Route::patch('/edit/{id}', 'PlayersController@update'); // Save update
+        Route::delete('/edit/{id}', 'PlayersController@destroy')->name('players.destroy'); // Destroy edit
+    });
+
+});
 
 Route::group([], function() {
     Route::get('/', 'PagesController@index')->name('home'); // Go to home
@@ -20,12 +29,8 @@ Route::group([], function() {
 });
 
 Route::group(['prefix' => 'players'], function() {
-    Route::get('/', 'PlayersController@index')->name('players.index'); // Show all Player 
     Route::get('/new', 'PlayersController@create')->name('players.new'); // Create Player
     Route::post('/new', 'PlayersController@store'); // Store Player
-    Route::get('/edit/{id}', 'PlayersController@edit')->name('players.edit'); // Show edit Player form example: route('players.edit', ['id' => $player->id])
-    Route::patch('/edit/{id}', 'PlayersController@update'); // Sla het bewerkte project opl
-    Route::delete('/edit/{id}', 'PlayersController@destroy')->name('players.destroy');;
 });
 
 Route::group(['prefix' => 'files'], function() {
@@ -38,3 +43,11 @@ Route::group(['prefix' => 'points'], function() {
     Route::post('/new', 'PointsController@store'); //Store points
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

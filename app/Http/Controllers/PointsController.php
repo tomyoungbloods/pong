@@ -82,9 +82,10 @@ class PointsController extends Controller
      * @param  \App\Point  $point
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Point $point)
+    public static function DestroyFromPlayerController($player)
     {
-        //
+        $points = Point::where('id', $player->id)->firstOrFail();
+        $points->delete();
     }
 
     /**

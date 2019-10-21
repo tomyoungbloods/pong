@@ -94,14 +94,14 @@ class FilesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Update the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $player
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function deleteFromPlayerController ($player)
     {
-        //
+        
     }
 
     /**

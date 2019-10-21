@@ -29,7 +29,7 @@ class PagesController extends Controller
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('total_points');
         //Pak de bovenste drie uit de collectie
-        $collection = collect($players->toArray())->sortByDesc('total_points')->take(3);
+        $collection = $players->take(3);
         //De bovenste drie worden geplaatst in een variabele genaamd podium
         $topOfTable = $collection->collect();
 

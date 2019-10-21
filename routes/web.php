@@ -22,9 +22,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group([], function() {
     Route::get('/', 'PagesController@index')->name('home'); // Go to home
-    Route::get('/check-in', 'PagesController@checkIn')->name('check-in');
-    Route::get('/knock-out', 'PagesController@knockOut')->name('knock-out');
-    Route::get('/session-builder', 'PagesController@sessionBuilder')->name('sessionBuilder');
+    Route::get('/check-in', 'PagesController@checkIn')->name('check-in'); // Check in for the knock out round
+    Route::get('/knock-out', 'PagesController@knockOut')->name('knock-out'); // Start Knock out
+    Route::get('/session-builder', 'PagesController@sessionBuilder')->name('sessionBuilder'); //Build session and redirect to Knock out view
     Route::patch('/knock-out/{id}', 'PagesController@updateKnockout'); // Update speler in de game
 });
 
@@ -42,12 +42,3 @@ Route::group(['prefix' => 'points'], function() {
     Route::get('/new', 'PointsController@create')->name('points.new'); //Create points
     Route::post('/new', 'PointsController@store'); //Store points
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

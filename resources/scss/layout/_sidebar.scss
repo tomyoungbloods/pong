@@ -24,6 +24,11 @@ SIDEBAR
   }
 }
 
+.sidebar-collapse .navbar-header {
+  width: 5.75rem;
+  z-index: 1;
+}
+
 .sidebar-nav {
   flex: 1;
   padding: 0 em(15);

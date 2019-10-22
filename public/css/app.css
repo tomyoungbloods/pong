@@ -25773,6 +25773,10 @@ SIDEBAR
     border-right: 0;
     border-left: 1px solid rgba(90, 131, 255, 0.2); }
 
+.sidebar-collapse .navbar-header {
+  width: 5.75rem;
+  z-index: 1; }
+
 .sidebar-nav {
   -webkit-box-flex: 1;
   -ms-flex: 1;

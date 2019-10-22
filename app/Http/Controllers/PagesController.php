@@ -187,7 +187,7 @@ class PagesController extends Controller
           $point->player_id = $player->id;
           $point->save();
           }
-       $player->save();
+        $player->save();
 
        
         // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array

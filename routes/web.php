@@ -28,6 +28,10 @@ Route::group([], function() {
     Route::patch('/knock-out/{id}', 'PagesController@updateKnockout'); // Update speler in de game
 });
 
+Route::group(['prefix' => 'competition'], function() {
+    Route::get('/filter/{start_date}/{end_date?}', 'PagesController@competitionFilter')->name('filter.new'); //Create filter
+});
+
 Route::group(['prefix' => 'players'], function() {
     Route::get('/new', 'PlayersController@create')->name('players.new'); // Create Player
     Route::post('/new', 'PlayersController@store'); // Store Player
@@ -42,4 +46,6 @@ Route::group(['prefix' => 'points'], function() {
     Route::get('/new', 'PointsController@create')->name('points.new'); //Create points
     Route::post('/new', 'PointsController@store'); //Store points
 });
+
+
 

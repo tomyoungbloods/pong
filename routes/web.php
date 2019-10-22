@@ -42,3 +42,4 @@ Route::group(['prefix' => 'points'], function() {
     Route::get('/new', 'PointsController@create')->name('points.new'); //Create points
     Route::post('/new', 'PointsController@store'); //Store points
 });
+

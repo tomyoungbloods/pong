@@ -57,7 +57,7 @@ class PlayersController extends Controller
             FilesController::storeFromPlayerController($file_data);
         }
   
-        return redirect()->route('home');
+        return redirect('/');
     }
 
     /**

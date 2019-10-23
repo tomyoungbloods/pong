@@ -176,8 +176,14 @@ class PagesController extends Controller
         // active_player_count && players
         $dataSession = PointsController::knockOutFromPlayerController($session);
 
-        if(empty($dataSession['players']->toArray())) {
-            return redirect()->route('home');
+        if(is_array($dataSession['players'])) {
+            if(empty($dataSession['players'])) {
+                return redirect()->route('home');
+            }
+        } else {
+            if(empty($dataSession['players']->toArray())) {
+                return redirect()->route('home');
+            }
         }
 
         $checkedin = $dataSession['players'];
@@ -230,7 +236,4 @@ class PagesController extends Controller
       // Return $return
       return back(); 
     }
-
-
-
 }

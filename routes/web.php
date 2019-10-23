@@ -29,7 +29,7 @@ Route::group([], function() {
 });
 
 Route::group(['prefix' => 'competition'], function() {
-    Route::get('/filter/{start_date}/{end_date?}', 'PagesController@competitionFilter')->name('filter.new'); //Create filter
+    Route::get('/filter/{start_date?}/{end_date?}', 'PagesController@competitionFilter')->name('filter.new'); //Create filter
 });
 
 Route::group(['prefix' => 'players'], function() {

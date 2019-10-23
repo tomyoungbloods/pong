@@ -54,5 +54,18 @@ class Player extends Model
     public function getAvatarUrlAttribute() {
         return $this->getPlayerAvatarUrl();
     }
+
+    public function pointsInPeriod($dates) {
+        $points_in_period = $this->Points()->where([
+            ['created_at', '>', $dates['start_date']],
+            ['created_at', '<', $dates['end_date']],
+        ])->get();
+        $total_in_period = 0;
+        foreach($points_in_period as $point) {
+            $total_in_period = $total_in_period + $point->points;
+        }
+
+        return $total_in_period;
+    }
 }
 

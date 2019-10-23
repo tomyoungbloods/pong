@@ -48,18 +48,61 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function competitionFilter()
+    public function competitionFilter(Request $request, $weeks = null)
     {
         //Get all players
         $players = Player::all();
 
-        //Hiermee controlleert hij of er een startdatum is opgegeven
+        //Hiermee controlleert hij of er een startdatum is opgegeven wanneer dat niet het geval is plaats de datum van vandaag
         if(!isset($end_date) && empty($end_date)) {
             $end_date = Carbon::now();
         }
-        $start_date = Carbon::create($start_date);
+
+        $start_date_carbon = Carbon::now()->startOfWeek()->subDays(2);
         $now = Carbon::now();
-        return view('pages.competition');
+        $end_date = (new Carbon($start_date_carbon))->addDays(6);
+        // dd($start_date_carbon);
+
+        if(!isset($weeks)) {
+            $weeks = 0;
+        }
+
+        if($weeks == 0) {
+            //
+        } elseif($weeks == 1) {
+            $start_date_carbon->subWeek();
+            $end_date->subWeek();
+        } else {
+            $start_date_carbon->subWeeks($weeks);
+            $end_date->subWeeks($weeks);
+        }
+
+        $dates = [
+            'start_date' => $start_date_carbon,
+            'end_date' => $end_date,
+        ];
+
+        foreach($players as $player) {
+            $player->points_in_period = $player->pointsInPeriod($dates);
+        }
+        //Haal voor elke individuele player uit de andere dataset de total_points en avatar_url
+        foreach($players as $player) {
+          $player->avatar_url = $player->avatar_url;
+        } 
+        //Sorteer aantal spelers op de behaalde punten
+        $players = collect($players->toArray())->sortByDesc('points_in_period');
+       
+        $topOfTable = $players->take(3)->sortByDesc('points_in_period');
+       
+        //Plaats alle data in een array
+        $array = [ 
+          'players' => $players,
+          'dates' => $dates,
+          'weeks' => $weeks,
+          'topOfTable' => $topOfTable,
+        ]; 
+
+        return view('pages.competition')->with($array);
 
     }
 

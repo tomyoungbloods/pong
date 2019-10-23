@@ -13,29 +13,21 @@ function startTime() {
     return i;
   }
 
-function startKnockOut(h, m) {
+function startTimeAction(h, m, redirect) {
   var now = new Date();
   var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0, 0) - now;
   if (millisTill10 < 0) {
       millisTill10 += 86400000; // Check Tommorow
   }
-  setTimeout(function(){ window.location.replace('/session-builder') }, millisTill10);
+  setTimeout(function(){ window.location.replace(redirect) }, millisTill10);
 }
 
 // Set Time for start
-startKnockOut(10, 38);
-startKnockOut(13, 08);
-startKnockOut(15, 08);
+startTimeAction(10, 38, '/session-builder');
+startTimeAction(13, 08, '/session-builder');
+startTimeAction(15, 08, '/session-builder');
 
-function showCompetition(h, m) {
-  var now = new Date();
-  var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0, 0) - now;
-  if (millisTill10 < 0) {
-      millisTill10 += 86400000; // Check Tommorow
-  }
-  setTimeout(function(){ window.location.replace('/') }, millisTill10);
-}
-// Set time for showing competiti
-showCompetition(10, 48);
-showCompetition(13, 18);
-showCompetition(15, 18);
+// Set time for showing competitie
+startTimeAction(10, 48, '/');
+startTimeAction(13, 18, '/');
+startTimeAction(15, 18, '/');

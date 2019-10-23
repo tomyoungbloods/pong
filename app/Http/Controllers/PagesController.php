@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Player;
 use App\File;
 use App\Point;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
@@ -41,6 +42,28 @@ class PagesController extends Controller
 
         return view('pages.index')->with($array); 
     }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function competitionFilter()
+    {
+        //Get all players
+        $players = Player::all();
+
+        //Hiermee controlleert hij of er een startdatum is opgegeven
+        if(!isset($end_date) && empty($end_date)) {
+            $end_date = Carbon::now();
+        }
+        $start_date = Carbon::create($start_date);
+        $now = Carbon::now();
+        return view('pages.competition');
+
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -207,4 +230,7 @@ class PagesController extends Controller
       // Return $return
       return back(); 
     }
+
+
+
 }

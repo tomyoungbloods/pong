@@ -1,3 +1,54 @@
 .siderank {
-    background: red;
+    background: #121212;
+    padding: 15px;
+    min-height: 100%;
 } 
+
+span.pts {
+    font-size: 10px;
+}
+
+.side-wrapper{
+    padding-bottom: 10px;
+}
+
+.side-place{
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.side-punten-ranking {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.side-rank-thumb img {
+    border-radius: 37px;
+    width: 50px;
+    height: 100%;
+}
+
+.side-naam-ranking {
+    display: flex;
+    width: 70%;
+}
+
+.side-ranking{
+    display: flex;
+    justify-content: space-between;
+}
+.side-title{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+   
+}
+   

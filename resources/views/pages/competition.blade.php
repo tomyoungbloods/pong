@@ -10,8 +10,8 @@
 
 <div class="container-fluid">
     <div class="row">
-    <div class="col-10">
-        <div class="row">
+    <div class="col-10 standing-box">
+        <div class="row selection-pick">
                 <div class="col-md-2">
                     <select id="week-changer" class="form-control selectpicker" title="Selecteer een week..." data-style="btn-dark">
                         @foreach ($week_selectors as $week)
@@ -36,7 +36,9 @@
                                         {{$player['name']}}
                                     </div>
                                         <div class="punten-ranking">
-                                        {{$player['points_in_period']}}PTS
+                                            <span class="pts-wrap">
+                                            {{$player['points_in_period']}}<span class="pts">PTS</span>
+                                        </span>
                                         </div>
                             </div>
                         </div>
@@ -57,7 +59,9 @@
                                         {{$player['name']}}
                                     </div>
                                         <div class="punten-ranking">
-                                        {{$player['points_in_period']}}<span class="pts">PTS</span>
+                                            <span class="pts-wrap">
+                                            {{$player['points_in_period']}}<span class="pts">PTS</span>
+                                            </span>
                                         </div>
                             </div>
                         </div>

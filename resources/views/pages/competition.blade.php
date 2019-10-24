@@ -1,12 +1,22 @@
 @extends('layouts.app')
 
 @push('header-css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
 @endpush
 
 @section('title', 'Standing')
 @section('description', '')
 @section('content')
 <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-2">
+                    <select id="week-changer" class="form-control selectpicker" title="Selecteer een week..." data-style="btn-dark">
+                        @foreach ($week_selectors as $week)
+                            <option value="{{ $week['url'] }}">{{ $week['name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+        </div>
         <div class="row">
                 @foreach ($topOfTable as $player)
                 <div class="col-md-12" id="top{{ $loop->iteration }}">
@@ -61,20 +71,21 @@
             </div>  
     </div>
     </div>
-    <div class="row">
-            <form method="POST" action="/filter/{weeks?}" enctype="multipart/form-data">
-                @csrf
-                <select>
-                        <option value="0">Deze week</option>
-                        <option value="1">Vorige Week</option>
-                        <option value="2">Twee weken geleden</option>
-                        <option value="3">Drie weken geleden</option>
-                      </select>
-                      <button class="btn btn-ping-pong" type="submit">Maak een speler aan</button>
-            </form>
-    </div>
-</div>
-
+    
 @endsection
+
 @push('footer-scripts')
+<script>
+    $(function(){
+        // bind change event to select
+        $('#week-changer').on('change', function () {
+            var url = $(this).val(); // get selected value
+            if (url) { // require a URL
+                window.location = url; // redirect
+            }
+            return false;
+        });
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 @endpush

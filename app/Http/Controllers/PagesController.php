@@ -93,6 +93,13 @@ class PagesController extends Controller
         $players = collect($players->toArray())->sortByDesc('points_in_period');
        
         $topOfTable = $players->take(3)->sortByDesc('points_in_period');
+
+        $week_selectors = [
+            ['url' => route('filter.new', ['weeks' => 1]), 'name' => 'Vorige week'],
+            ['url' => route('filter.new', ['weeks' => 2]), 'name' => 'Twee weken geleden'],
+            ['url' => route('filter.new', ['weeks' => 3]), 'name' => 'Drie weken geleden'],
+            ['url' => route('filter.new', ['weeks' => 4]), 'name' => 'Vier weken geleden'],
+        ];
        
         //Plaats alle data in een array
         $array = [ 
@@ -100,11 +107,13 @@ class PagesController extends Controller
           'dates' => $dates,
           'weeks' => $weeks,
           'topOfTable' => $topOfTable,
+          'week_selectors' => $week_selectors,
         ]; 
 
         return view('pages.competition')->with($array);
-
     }
+
+
 
     
 
@@ -126,7 +135,7 @@ class PagesController extends Controller
      */ 
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -149,7 +158,6 @@ class PagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

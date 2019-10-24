@@ -30,7 +30,7 @@ Route::group([], function() {
 
 Route::group(['prefix' => 'competition'], function() {
     Route::get('/filter/{weeks?}', 'PagesController@competitionFilter')->name('filter.new'); //Create filter
-    Route::post('/filter/{weeks?}', 'PagesController@competitionFilter')->name('filter.new'); //Create filter
+    Route::post('/filter/{weeks?}', 'PagesController@competitionFilter'); //Create filter
 });
 
 Route::group(['prefix' => 'players'], function() {

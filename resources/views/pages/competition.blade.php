@@ -12,7 +12,9 @@
                 <div class="col-md-2">
                     <select id="week-changer" class="form-control selectpicker" title="Selecteer een week..." data-style="btn-dark">
                         @foreach ($week_selectors as $week)
-                            <option value="{{ $week['url'] }}">{{ $week['name'] }}</option>
+                            <option value="{{ $week['url'] }}" @if ($weeks == $week['week_nr'])
+                                selected
+                            @endif>{{ $week['name'] }}</option>
                         @endforeach
                     </select>
                 </div>

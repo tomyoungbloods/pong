@@ -95,10 +95,11 @@ class PagesController extends Controller
         $topOfTable = $players->take(3)->sortByDesc('points_in_period');
 
         $week_selectors = [
-            ['url' => route('filter.new', ['weeks' => 1]), 'name' => 'Vorige week'],
-            ['url' => route('filter.new', ['weeks' => 2]), 'name' => 'Twee weken geleden'],
-            ['url' => route('filter.new', ['weeks' => 3]), 'name' => 'Drie weken geleden'],
-            ['url' => route('filter.new', ['weeks' => 4]), 'name' => 'Vier weken geleden'],
+            ['url' => route('filter.new', ['weeks' => 0]), 'name' => 'Huidige week', 'week_nr' => 0],
+            ['url' => route('filter.new', ['weeks' => 1]), 'name' => 'Vorige week', 'week_nr' => 1],
+            ['url' => route('filter.new', ['weeks' => 2]), 'name' => 'Twee weken geleden', 'week_nr' => 2],
+            ['url' => route('filter.new', ['weeks' => 3]), 'name' => 'Drie weken geleden', 'week_nr' => 3],
+            ['url' => route('filter.new', ['weeks' => 4]), 'name' => 'Vier weken geleden', 'week_nr' => 4],
         ];
        
         //Plaats alle data in een array

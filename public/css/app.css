@@ -321,6 +321,9 @@ label#naam-check {
 .breadcrumb a {
   color: #FDD50B !important; }
 
+.siderank {
+  background: red; }
+
 /* Media Queries */
 /* Placeholder */
 /* Set Margin & Padding */

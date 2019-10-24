@@ -7,7 +7,10 @@
 @section('title', 'Standing')
 @section('description', '')
 @section('content')
+
 <div class="container-fluid">
+    <div class="row">
+    <div class="col-10">
         <div class="row">
                 <div class="col-md-2">
                     <select id="week-changer" class="form-control selectpicker" title="Selecteer een week..." data-style="btn-dark">
@@ -72,9 +75,15 @@
                 </div>
             </div>  
     </div>
+    <div class="col-2">
+    @include('templates.sideranking')
     </div>
-    
+</div>
+</div>
+
+
 @endsection
+
 
 @push('footer-scripts')
 <script>

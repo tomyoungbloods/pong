@@ -30,7 +30,7 @@
         <nav class="navbar">
             <!-- Logo Area -->
             <div class="navbar-header">
-                <a href="/" class="navbar-brand">
+                <a href="{{ route('filter.new') }}" class="navbar-brand">
                     <img class="logo-expand" alt="" src="{{ asset('img/logo_transparant_wit.png') }}">
                     <img class="logo-collapse" alt="" src="{{ asset('img/logo_transparant_wit.png') }}">
                     <!-- <p>BonVue</p> -->

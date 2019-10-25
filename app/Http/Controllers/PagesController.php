@@ -60,7 +60,7 @@ class PagesController extends Controller
 
         $start_date_carbon = Carbon::now()->startOfWeek()->subDays(2);
         $now = Carbon::now();
-        $end_date = (new Carbon($start_date_carbon))->addDays(6);
+        $end_date = (new Carbon($start_date_carbon))->addWeek();
 
         //Kijk of de waarde van weeks meegegeven is
         if(!isset($weeks)) {
@@ -81,6 +81,7 @@ class PagesController extends Controller
             'start_date' => $start_date_carbon,
             'end_date' => $end_date,
         ];
+
 
         foreach($players as $player) {
             $player->points_in_period = $player->pointsInPeriod($dates);

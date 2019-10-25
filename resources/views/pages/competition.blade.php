@@ -72,7 +72,7 @@
             <div class="row">
                     <div class="col-md-12 center">
                     <button type="button" class="btn btn-ping-pong">
-                        <a href="check-in">
+                        <a href="/check-in">
                             Klik hier om in te checken
                         </a>
                     </div>

@@ -6,6 +6,12 @@
   -ms-flex-align: end;
   align-items: flex-end; }
 
+.standing-box {
+  padding: 40px !important; }
+
+.selection-pick {
+  padding-bottom: 20px; }
+
 #mainrank1, #mainrank2, #mainrank3 {
   display: none; }
 

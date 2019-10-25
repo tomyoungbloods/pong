@@ -37,10 +37,6 @@ class Player extends Model
     public function getTotalPointsAttribute() {
 
         return $this->getTotalPoints();
-        
-        $sort->sortByPoints(function ($total_points){
-            return $sort->player->total_points();
-        }); 
     }
 
     protected function getPlayerAvatarUrl() {

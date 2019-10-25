@@ -40,7 +40,7 @@ class PagesController extends Controller
             'topOfTable' => $topOfTable,
         ]; 
 
-        return view('pages.index')->with($array); 
+        return view('templates.sideranking')->with($array); 
     }
 
      /**
@@ -60,9 +60,9 @@ class PagesController extends Controller
 
         $start_date_carbon = Carbon::now()->startOfWeek()->subDays(2);
         $now = Carbon::now();
-        $end_date = (new Carbon($start_date_carbon))->addDays(6);
-        // dd($start_date_carbon);
+        $end_date = (new Carbon($start_date_carbon))->addWeek();
 
+        //Kijk of de waarde van weeks meegegeven is
         if(!isset($weeks)) {
             $weeks = 0;
         }
@@ -82,6 +82,7 @@ class PagesController extends Controller
             'end_date' => $end_date,
         ];
 
+
         foreach($players as $player) {
             $player->points_in_period = $player->pointsInPeriod($dates);
         }
@@ -91,9 +92,11 @@ class PagesController extends Controller
         } 
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('points_in_period');
-       
+
+        //Pak de bovenste drie uit de table
         $topOfTable = $players->take(3)->sortByDesc('points_in_period');
 
+        //Zet hier de filters voor de dropdown
         $week_selectors = [
             ['url' => route('filter.new', ['weeks' => 0]), 'name' => 'Huidige week', 'week_nr' => 0],
             ['url' => route('filter.new', ['weeks' => 1]), 'name' => 'Vorige week', 'week_nr' => 1],
@@ -101,16 +104,35 @@ class PagesController extends Controller
             ['url' => route('filter.new', ['weeks' => 3]), 'name' => 'Drie weken geleden', 'week_nr' => 3],
             ['url' => route('filter.new', ['weeks' => 4]), 'name' => 'Vier weken geleden', 'week_nr' => 4],
         ];
-       
-        //Plaats alle data in een array
-        $array = [ 
-          'players' => $players,
-          'dates' => $dates,
-          'weeks' => $weeks,
-          'topOfTable' => $topOfTable,
-          'week_selectors' => $week_selectors,
-        ]; 
 
+        $players_all_time = Player::all();
+
+        foreach($players_all_time as $player) {
+            $player->avatar_url = $player->avatar_url;
+            $player->total_points = $player->total_points;
+          }
+
+        //Sorteer aantal spelers op de behaalde punten
+        $players_all_time = collect($players_all_time->toArray())->sortByDesc('total_points');
+        //Pak de bovenste drie uit de collectie
+        $collection = $players_all_time->take(3);
+        //De bovenste drie worden geplaatst in een variabele genaamd topOfTable_all_time
+        $topOfTable_all_time = $collection->collect();
+
+        // dd($players_all_time);
+
+         //Plaats alle data in een array
+         $array = [ 
+            'players' => $players,
+            'dates' => $dates,
+            'weeks' => $weeks,
+            'topOfTable' => $topOfTable,
+            'week_selectors' => $week_selectors,
+            'players_all_time' => $players_all_time,
+            'topOfTable_all_time' => $topOfTable_all_time,
+          ]; 
+
+       
         return view('pages.competition')->with($array);
     }
 

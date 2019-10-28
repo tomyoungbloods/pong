@@ -89,6 +89,8 @@ class PagesController extends Controller
         //Haal voor elke individuele player uit de andere dataset de total_points en avatar_url
         foreach($players as $player) {
           $player->avatar_url = $player->avatar_url;
+          
+          $player->last_four_games = $player->last_four_games;
         } 
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('points_in_period');

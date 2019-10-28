@@ -3,6 +3,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Point;
 
 class Player extends Model
 {
@@ -62,6 +63,39 @@ class Player extends Model
         }
 
         return $total_in_period;
+    }
+
+    protected function getLastFourGames() {
+        
+        $LastFourpoints = Point::where('player_id', $this->id)->orderBy('created_at', 'desc')->take(4)->get();
+
+        $i = 0;
+        $count = $LastFourpoints->count();
+        $points_array = [];
+        if($count < 4) {
+            $amount = 4 - $count;
+            for($j = 0; $j < $amount; $j++) {
+                $points_array[] = 0;
+            }
+            foreach($LastFourpoints as $point) {
+                $points_array[] = $point->points;
+                
+                $i++;
+            }
+        } else {
+            foreach($LastFourpoints as $point) {
+                $points_array[] = $point->points;
+                
+                $i++;
+            }
+        }
+        $points_array = array_reverse($points_array);
+
+        return implode(' - ', $points_array);
+    }
+    public function getLastFourGamesAttribute() {
+
+        return $this->getLastFourGames();
     }
 }
 

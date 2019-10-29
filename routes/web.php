@@ -17,6 +17,11 @@ Route::group(['middleware' => 'auth'], function() {
         Route::patch('/edit/{id}', 'PlayersController@update'); // Save update
         Route::delete('/edit/{id}', 'PlayersController@destroy')->name('players.destroy'); // Destroy edit
     });
+    Route::group(['prefix' => 'category'], function() {
+        Route::get('/', 'WinnerCategoriesController@index')->name('categories.index'); // Show all Categories
+        Route::get('/new', 'WinnerCategoriesController@create')->name('categories.new'); // Show all Categories 
+        Route::post('/new', 'WinnerCategoriesController@store'); // Store Categories
+    });
 
 });
 
@@ -48,5 +53,6 @@ Route::group(['prefix' => 'points'], function() {
     Route::post('/new', 'PointsController@store'); //Store points
 });
 
+Auth::routes();
 
-
+Route::get('/home', 'HomeController@index')->name('home');

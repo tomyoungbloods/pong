@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('folder_name');
             $table->unsignedBigInteger('player_id');
             $table->timestamps();
-            $table->foreign('player_id')->references('id')->on('player');
+            $table->foreign('player_id')->references('id')->on('players');
         });
     }
 

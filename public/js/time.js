@@ -23,7 +23,6 @@ function startTimeAction(h, m, redirect) {
 }
 
 // Set Time for start
-startTimeAction(10, 23, '/session-builder');
 startTimeAction(10, 38, '/session-builder');
 startTimeAction(13, 08, '/session-builder');
 startTimeAction(15, 08, '/session-builder');

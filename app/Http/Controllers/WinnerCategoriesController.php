@@ -14,7 +14,7 @@ class WinnerCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        dd("lalala");
     }
 
     /**
@@ -24,7 +24,7 @@ class WinnerCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create-categories');
     }
 
     /**
@@ -35,7 +35,12 @@ class WinnerCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Make new model called WinnerCategory
+        $category = new WinnerCategory();
+        $category->name = request('name');
+        $category->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**

@@ -70,10 +70,12 @@
             @endforeach
         </div>
                     <div class="col-md-12 center">
+                    <a href="/check-in">
                     <button type="button" class="btn btn-ping-pong">
-                        <a href="/check-in">
-                            Klik hier om in te checken
-                        </a>
+                        Klik hier om in te checken
+                    </button>
+                    </a>
+
                     </div>
                 </div>  
     </div>

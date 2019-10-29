@@ -1,16 +1,13 @@
 button.btn.btn-ping-pong{
     background-color: $button-bg;
     border-radius: 10px;
+    color:  #121212;
     &:hover{
         background-color: $button-bg-hover;
     }
-    a{
-        color:  $button-color;
-        font-weight: 700;
-    }&:hover{
+    &:hover{
         color:  $button-color-hover;
-    }
-    
+    }   
 }
 
 button.btn.btn-ping-pong-alternatief{

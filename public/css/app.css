@@ -209,14 +209,12 @@ div#opstelling-3 {
 
 button.btn.btn-ping-pong {
   background-color: #FDD50B;
-  border-radius: 10px; }
+  border-radius: 10px;
+  color: #121212; }
   button.btn.btn-ping-pong:hover {
-    background-color: #FdD50B; }
-  button.btn.btn-ping-pong a {
-    color: #121212;
-    font-weight: 700; }
+    background-color: #121212; }
   button.btn.btn-ping-pong:hover {
-    color: #121212; }
+    color: #FDD50B; }
 
 button.btn.btn-ping-pong-alternatief {
   background-color: #eee;

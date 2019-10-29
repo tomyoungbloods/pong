@@ -11,22 +11,22 @@
     <div class="row">
         <h1>Bewerk Speler</h1>
     </div>
-        <div class="row">
+        <div class="row widget-bg widget-body">
             <form method="POST" action="{{ route('players.edit', ['id' => $player->id]) }}" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                     <div>
-                        <input type="text" name="name" placeholder="Naam Speler" value="{{ $player->name }}">
+                        <input type="text" name="name" placeholder="Naam Speler" class="form-control mb-3" value="{{ $player->name }}">
                     </div>
                         <div class="form-group">
-                            <input type="file" name="avatar">
+                            <input class="form-control mb-3" type="file" name="avatar">
                         </div>
                         <div>
                             <button class="btn btn-ping-pong" type="submit">Maak een speler aan</button>
                         </div>
             </form>
         </div>
-        <div class="row">
+        <div class="row widget-bg widget-body">
             <form method="POST" action="{{ route('players.destroy', ['id' => $player->id]) }}">
                 @method('DELETE')
                 @csrf

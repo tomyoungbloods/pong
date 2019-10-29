@@ -33,7 +33,7 @@
                                         <div class="rank-thumb">
                                             <img src="{{ $player['avatar_url'] }}">
                                         </div>
-                                        {{$player['name']}} {{$player['last_four_games']}} 
+                                        {{$player['name']}}<span> Vorm:</span> {{$player['last_four_games']}} 
                                     </div>
                                         <div class="punten-ranking">
                                             <span class="pts-wrap">
@@ -56,7 +56,7 @@
                                         <div class="rank-thumb">
                                             <img src="{{ $player['avatar_url'] }}">
                                         </div>
-                                        {{$player['name']}} {{$player['last_four_games']}} 
+                                        {{$player['name']}}<span> Vorm:</span> {{$player['last_four_games']}} 
                                     </div>
                                         <div class="punten-ranking">
                                             <span class="pts-wrap">

@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'category'], function() {
         Route::get('/', 'WinnerCategoriesController@index')->name('categories.index'); // Show all Categories
         Route::get('/new', 'WinnerCategoriesController@create')->name('categories.new'); // Show all Categories 
+        Route::get('/edit/{id}', 'WinnerCategoriesController@edit')->name('categories.edit'); // Show edit category
+        Route::patch('/edit/{id}', 'WinnerCategoriesController@update'); // Save update
+        Route::delete('/edit/{id}', 'WinnerCategoriesController@destroy')->name('categories.destroy'); // Destroy edit
         Route::post('/new', 'WinnerCategoriesController@store'); // Store Categories
     });
 

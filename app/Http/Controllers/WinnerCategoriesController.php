@@ -14,7 +14,14 @@ class WinnerCategoriesController extends Controller
      */
     public function index()
     {
-        dd("lalala");
+         // Take al categories
+         $categories = WinnerCategory::all();
+         // categories in Array
+         $array = [ 
+             'categories' => $categories,
+         ]; 
+         // Return view with Array
+         return view('categories.categories')->with($array);
     }
 
     /**
@@ -60,9 +67,12 @@ class WinnerCategoriesController extends Controller
      * @param  \App\WinnerCategory  $winnerCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(WinnerCategory $winnerCategory)
+    public function edit($id)
     {
-        //
+        // Find category by id
+        $category = WinnerCategory::find($id);
+        //Return view and send $category 
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -72,9 +82,16 @@ class WinnerCategoriesController extends Controller
      * @param  \App\WinnerCategory  $winnerCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WinnerCategory $winnerCategory)
+    public function update(Request $request, $id)
     {
-        //
+        // Find category by ID
+        $category = WinnerCategory::find($id);
+        // Edit category Name to the request name
+        $category->name = request('name');
+        // Save category
+        $category->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -83,8 +100,13 @@ class WinnerCategoriesController extends Controller
      * @param  \App\WinnerCategory  $winnerCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WinnerCategory $winnerCategory)
+    public function destroy($id)
     {
-        //
+        // Find category by ID
+        $category = WinnerCategory::where('id', $id)->firstOrFail();
+        // Delete category
+        $category->Delete();
+        // Redirect to home
+        return redirect('/'); 
     }
 }

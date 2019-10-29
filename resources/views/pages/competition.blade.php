@@ -69,15 +69,13 @@
                 </div>
             @endforeach
         </div>
-            <div class="row">
                     <div class="col-md-12 center">
                     <button type="button" class="btn btn-ping-pong">
                         <a href="/check-in">
                             Klik hier om in te checken
                         </a>
                     </div>
-                </div>
-            </div>  
+                </div>  
     </div>
     <div class="col-4">
     @include('templates.sideranking')

@@ -12,7 +12,7 @@
         <h1>Voeg een speler toe</h1>
     </div>
         <div class="container">
-            <div class="row">
+            <div class="row widget-bg widget-body">
                 <ul>
                     @foreach ($players as $player)
                 <li><a href ="{{route("players.edit", ["id"=>$player->id])}}">{{$player->name}}</a></li>

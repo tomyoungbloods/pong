@@ -12,7 +12,7 @@
         <h1>Bekijk categorie</h1>
     </div>
         <div class="container">
-            <div class="row">
+            <div class="row widget-bg widget-body">
                 <ul>
                     @foreach ($categories as $category)
                 <li><a href ="{{route("categories.edit", ["id"=>$category->id])}}">{{$category->name}}</a></li>

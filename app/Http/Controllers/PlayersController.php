@@ -16,7 +16,7 @@ class PlayersController extends Controller
     public function index()
     {
         // Take al players
-        $players = Player::all();
+        $players = Player::orderBy('name')->get();
         // Players in Array
         $array = [ 
             'players' => $players,

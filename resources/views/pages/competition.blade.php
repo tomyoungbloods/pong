@@ -33,13 +33,16 @@
                                         <div class="rank-thumb">
                                             <img src="{{ $player['avatar_url'] }}">
                                         </div>
-                                        {{$player['name']}}<span> Vorm:</span> {{$player['last_four_games']}} 
+                                        {{$player['name']}} 
                                     </div>
-                                        <div class="punten-ranking">
-                                            <span class="pts-wrap">
-                                            {{$player['points_in_period']}}<span class="pts">PTS</span>
-                                        </span>
-                                        </div>
+                                    <div class="lastfour">
+                                            <span class="vorm"> Vorm:<span class="streak">{{$player['last_four_games']}}</span></span>
+                                    </div>
+                                    <div class="punten-ranking">
+                                        <span class="pts-wrap">
+                                        {{$player['points_in_period']}}<span class="pts">PTS</span>
+                                    </span>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -56,7 +59,10 @@
                                         <div class="rank-thumb">
                                             <img src="{{ $player['avatar_url'] }}">
                                         </div>
-                                        {{$player['name']}}<span> Vorm:</span> {{$player['last_four_games']}} 
+                                        {{$player['name']}}
+                                    </div>
+                                    <div class="lastfour">
+                                        <span class="vorm"> Vorm:<span class="streak">{{$player['last_four_games']}}</span></span>
                                     </div>
                                         <div class="punten-ranking">
                                             <span class="pts-wrap">

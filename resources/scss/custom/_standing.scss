@@ -11,6 +11,28 @@
     padding-bottom: 20px;
 }
 
+span.vorm {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #767676; 
+    padding-right: 10px;
+    font-family: "Montserrat";
+}
+
+
+span.streak {
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #767676; 
+    padding-left: 10px;
+    font-family: "Montserrat";
+}
+
+
+
+
 
 
 #mainrank1, #mainrank2, #mainrank3
@@ -63,7 +85,12 @@ div#top1 .place, div#top2 .place, div#top3 .place
     align-items: center;
 }
 
-
+.lastfour {
+    justify-content: end;
+    align-items: center;
+    display: flex;
+    flex: 1;
+}
 
 
 .rank-thumb { 
@@ -100,11 +127,11 @@ li, ul{
     font-family: "Montserrat" ;
     color: #fff;
     font-weight: 700;
-    width: 70%;
+    flex: 1;
 }
 
 .punten{
-    width: 50%;
+    flex: 1;
     text-align: right;
     font-size: 36px;
     font-weight: 900;
@@ -115,11 +142,11 @@ li, ul{
     font-family: "Montserrat" ;
     color: #fff;
     font-weight: 700;
-    width: 70%;
+    flex: 1;
 }
 
 .punten-ranking{
-    width: 50%;
+    flex: 1;
     font-size: 24px;
     font-weight: 900;
     text-align: right;

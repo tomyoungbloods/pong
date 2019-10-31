@@ -17,6 +17,22 @@ CUSTOM
 .selection-pick {
   padding-bottom: 20px; }
 
+span.vorm {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #767676;
+  padding-right: 10px;
+  font-family: "Montserrat"; }
+
+span.streak {
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #767676;
+  padding-left: 10px;
+  font-family: "Montserrat"; }
+
 #mainrank1, #mainrank2, #mainrank3 {
   display: none; }
 
@@ -68,6 +84,20 @@ div#top1 .place, div#top2 .place, div#top3 .place {
   -ms-flex-align: center;
   align-items: center; }
 
+.lastfour {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
 .rank-thumb {
   width: 75px;
   margin-right: 10px;
@@ -102,10 +132,14 @@ li, ul {
   font-family: "Montserrat";
   color: #fff;
   font-weight: 700;
-  width: 70%; }
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
 
 .punten {
-  width: 50%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   text-align: right;
   font-size: 36px;
   font-weight: 900; }
@@ -115,10 +149,14 @@ li, ul {
   font-family: "Montserrat";
   color: #fff;
   font-weight: 700;
-  width: 70%; }
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
 
 .punten-ranking {
-  width: 50%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   font-size: 24px;
   font-weight: 900;
   text-align: right;

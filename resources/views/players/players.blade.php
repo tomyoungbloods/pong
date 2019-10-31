@@ -15,7 +15,7 @@
             <div class="row widget-bg widget-body">
                 <ul>
                     @foreach ($players as $player)
-                <li><a href ="{{route("players.edit", ["id"=>$player->id])}}">{{$player->name}}</a></li>
+                <li class="list-name"><a href ="{{route("players.edit", ["id"=>$player->id])}}">{{$player->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

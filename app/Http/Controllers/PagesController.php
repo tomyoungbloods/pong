@@ -254,6 +254,7 @@ class PagesController extends Controller
 
         if(is_array($dataSession['players'])) {
             if(empty($dataSession['players'])) {
+                // $selectWinners = WinnersController::selectWinners();
                 return redirect()->route('home');
             }
         } else {

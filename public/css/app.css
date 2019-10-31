@@ -332,6 +332,10 @@ label#naam-check {
   margin-left: 0;
   display: none; }
 
+.list-name {
+  font-size: 24px;
+  padding-top: 14px; }
+
 .siderank {
   background: #121212;
   padding: 15px;

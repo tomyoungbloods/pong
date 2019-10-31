@@ -72,6 +72,16 @@ class WinnersController extends Controller
         //
     }
 
+     /**
+     * SelectWinners listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function selectWinners()
+    {
+        dd("selecteerWinnaar");
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -154,9 +154,9 @@ li, ul {
   flex: 1; }
 
 .punten-ranking {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: 24px;
   font-weight: 900;
   text-align: right;

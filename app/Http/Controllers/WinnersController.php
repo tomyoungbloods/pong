@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Winner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WinnersController extends Controller
@@ -79,7 +80,8 @@ class WinnersController extends Controller
      */
     public static function selectWinners()
     {
-        dd("selecteerWinnaar");
+        $last_game = Carbon::now('Europe/Zurich')->subMinutes(15);
+        dd($last_game);
     }
 
     /**

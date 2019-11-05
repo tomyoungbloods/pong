@@ -55,11 +55,11 @@ class PagesController extends Controller
 
         //Hiermee controlleert hij of er een startdatum is opgegeven wanneer dat niet het geval is plaats de datum van vandaag
         if(!isset($end_date) && empty($end_date)) {
-            $end_date = Carbon::now();
+            $end_date = Carbon::now('Europe/Zurich');
         }
 
-        $start_date_carbon = Carbon::now()->startOfWeek()->subDays(2);
-        $now = Carbon::now();
+        $start_date_carbon = Carbon::now('Europe/Zurich')->startOfWeek()->subDays(2);
+        $now = Carbon::now('Europe/Zurich');
         $end_date = (new Carbon($start_date_carbon))->addWeek();
 
         //Kijk of de waarde van weeks meegegeven is
@@ -254,7 +254,7 @@ class PagesController extends Controller
 
         if(is_array($dataSession['players'])) {
             if(empty($dataSession['players'])) {
-                // $selectWinners = WinnersController::selectWinners();
+                $selectWinners = WinnersController::selectWinners();
                 return redirect()->route('home');
             }
         } else {

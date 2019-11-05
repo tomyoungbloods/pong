@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Winner;
+use App\Player;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class WinnersController extends Controller
 {
@@ -80,8 +82,37 @@ class WinnersController extends Controller
      */
     public static function selectWinners()
     {
-        $last_game = Carbon::now('Europe/Zurich')->subMinutes(15);
-        dd($last_game);
+        //Get all players
+        $players = Player::all();
+ 
+        $start_date = Carbon::now('Europe/Zurich')->subMinutes(15);
+        $end_date = Carbon::now('Europe/Zurich')->addMinutes(1);
+
+        $dates = [
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+        ];
+
+        foreach($players as $player) {
+            $player->points_in_period = $player->pointsInPeriod($dates);
+        }
+        //Haal voor elke individuele player uit de andere dataset de total_points en avatar_url
+        foreach($players as $player) {
+          $player->avatar_url = $player->avatar_url;
+          
+          $player->last_four_games = $player->last_four_games;
+        } 
+        //Sorteer aantal spelers op de behaalde punten
+        $players = collect($players->toArray())->sortByDesc('points_in_period');
+
+        $firstPlayer = $players->take(1)->first();
+        // dd($firstPlayer['id']);
+
+        $number = $firstPlayer['points_in_period'];
+
+        dd($number);
+        //$highestScore =  $firstPlayer['points_in_period'];
+        
     }
 
     /**

@@ -104,13 +104,23 @@ class WinnersController extends Controller
         } 
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('points_in_period');
-
+        //Pak de speler die eerste is geeindigd
         $firstPlayer = $players->take(1)->first();
-        // dd($firstPlayer['id']);
+        //Hoogste punten aantal
+        $highestNumber = $firstPlayer['points_in_period'];
 
-        $number = $firstPlayer['points_in_period'];
+        foreach($players as $player) {
 
-        dd($number);
+            if($player['points_in_period'] == $highestNumber) {
+                Winner::create([
+                    'winner_category_id' => 1,
+                    'player_id' => $player['id'],
+                    'position' => 9999,
+                ]);
+            }
+        }
+
+
         //$highestScore =  $firstPlayer['points_in_period'];
         
     }

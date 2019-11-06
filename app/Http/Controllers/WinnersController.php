@@ -118,11 +118,7 @@ class WinnersController extends Controller
                     'position' => 9999,
                 ]);
             }
-        }
-
-
-        //$highestScore =  $firstPlayer['points_in_period'];
-        
+        }  
     }
 
     /**

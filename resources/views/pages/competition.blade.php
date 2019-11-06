@@ -38,6 +38,9 @@
                                     <div class="lastfour">
                                             <span class="vorm"> Vorm:<span class="streak">{{$player['last_four_games']}}</span></span>
                                     </div>
+                                    <div class='medals'>
+                                        <div class="pauze"><span class="medal-number">{{$player['total_pauze_prices']}}</span></div>
+                                    </div>
                                     <div class="punten-ranking">
                                         <span class="pts-wrap">
                                         {{$player['points_in_period']}}<span class="pts">PTS</span>
@@ -63,6 +66,9 @@
                                     </div>
                                     <div class="lastfour">
                                         <span class="vorm"> Vorm:<span class="streak">{{$player['last_four_games']}}</span></span>
+                                    </div>
+                                    <div class='medals'>
+                                        <div class="pauze"><span class="medal-number">{{$player['total_pauze_prices']}}</span></div>
                                     </div>
                                         <div class="punten-ranking">
                                             <span class="pts-wrap">

@@ -88,9 +88,9 @@ class PagesController extends Controller
         }
         //Haal voor elke individuele player uit de andere dataset de total_points en avatar_url
         foreach($players as $player) {
-          $player->avatar_url = $player->avatar_url;
-          
+          $player->avatar_url = $player->avatar_url;      
           $player->last_four_games = $player->last_four_games;
+          $player->total_pauze_prices = $player->total_pauze_prices;
         } 
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('points_in_period');
@@ -120,8 +120,6 @@ class PagesController extends Controller
         $collection = $players_all_time->take(3);
         //De bovenste drie worden geplaatst in een variabele genaamd topOfTable_all_time
         $topOfTable_all_time = $collection->collect();
-
-        // dd($players_all_time);
 
          //Plaats alle data in een array
          $array = [ 

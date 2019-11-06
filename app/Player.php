@@ -4,13 +4,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Point;
+use App\Winner;
 
 class Player extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        "name", "points", "checked", 'profile_image'
+        "name", "points", "checked", 'profile_image', "winners"
     ];
     /**
      * Get Point records associated with Player
@@ -38,6 +39,14 @@ class Player extends Model
     public function getTotalPointsAttribute() {
 
         return $this->getTotalPoints();
+    }
+    
+    protected function getTotalPauzePrices() {
+        return Winner::where([['winner_category_id', 1],['player_id', $this->id],])->get()->count();
+    }
+    public function getTotalPauzePricesAttribute() {
+
+        return $this->getTotalPauzePrices();
     }
 
     protected function getPlayerAvatarUrl() {

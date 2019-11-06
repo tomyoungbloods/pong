@@ -170,7 +170,8 @@ li, ul {
   justify-content: flex-end;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  min-width: 80px; }
 
 .widget-holder.podium {
   background: #1B1F22;
@@ -222,9 +223,9 @@ div#opstelling-3 {
   color: #fff; }
 
 .pauze {
-  height: 50px;
+  height: 40px;
   background-image: url("/img/medal.png");
-  width: 50px;
+  width: 40px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -235,14 +236,11 @@ div#opstelling-3 {
   color: #121212; }
 
 .medal-number {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 900;
-  margin-top: 19px; }
+  margin-top: 15px; }
 
 .medals {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -4,11 +4,17 @@ function startTime() {
     var m = today.getMinutes();
     var s = today.getSeconds();
     m = checkTime(m);
+    s = checkTime1(s)
     document.getElementById('rolex').innerHTML =
     h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
   }
   function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+
+  function checkTime1(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
   }

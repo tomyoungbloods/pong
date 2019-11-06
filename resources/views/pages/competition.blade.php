@@ -22,6 +22,7 @@
                     </select>
                 </div>
         </div>
+        
         <div class="row">
                 @foreach ($topOfTable as $player)
                 <div class="col-md-12" id="top{{ $loop->iteration }}">

@@ -19,7 +19,7 @@ class CreateWinnersTable extends Migration
             $table->unsignedBigInteger('player_id');
             $table->integer('position');
             $table->timestamps();
-            $table->foreign('winner_category_id')->references('id')->on('winners');
+            $table->foreign('winner_category_id')->references('id')->on('winner_categories');
             $table->foreign('player_id')->references('id')->on('players');
         });
     }

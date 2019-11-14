@@ -75,24 +75,40 @@
 @push('footer-scripts')
 <script>
         jQuery(document).ready(function($) {
+            var check = false;
+            var position;
             $(document).on('keypress',function(e) {
-                if(e.keyCode == 114) {
-                    $('#position-1').click();
-                    var position = 'right';
-                }
-                else if(e.keyCode == 108) {
-                    $('#position-0').click();
-                    var position = 'left';
-                }
-                $(document).on('keypress',function(e) {
+
+                console.log(check, position)
+
+                if(!check){
+
+                    if(e.keyCode == 114) {
+                        $('#position-1').click();
+                        position = 'right';
+                    }
+                    else if(e.keyCode == 108) {
+                        $('#position-0').click();
+                        position = 'left';
+                    }
+
+                    check = true;
+
+                } else {
+
                     if((e.keyCode == 114 && position == 'right') || (e.keyCode == 108 && position == 'left')) {
                         $('#submit-loser').click();
                     } else {
                         $('#cancel-loser').click();
                     }
-                });
+
+                    check = false;
+                }
+
             });
+
             $('.exit-btn').click(function() {
+                
                 var id = $(this).data('id');
                 var name = $(this).data('name');
                 var points = $(this).data('points');
@@ -101,6 +117,7 @@
                 $('#exit-form').attr('action', '/knock-out/' + id);
                 $('#exit-points-val').val(points);
             });
+
         });
     </script>
 @endpush

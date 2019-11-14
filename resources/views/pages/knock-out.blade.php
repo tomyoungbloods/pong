@@ -15,7 +15,7 @@
             <div class="col-3">
                 <div class="widget-holder">
                         <div class="checkin-plaats">
-                                <a href="#" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
+                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
                                 <div class="checkin-image-4col">
                                     <img src="{{ $player['avatar_url'] }}">
                                 </div>
@@ -50,9 +50,9 @@
                             @csrf
                             @method('PATCH')
                             <input type="hidden" id="exit-points-val" name="points">
-                            <button type="submit" class="btn btn-danger ripple text-left">Ja, afmelden</button>
+                            <button type="submit" id="submit-loser" class="btn btn-danger ripple text-left">Ja, afmelden</button>
                         </form>
-                        <button type="button" class="btn btn-outline-secondary ripple text-left" data-dismiss="modal"><input name="points" type="hidden" value="{{$player->point_count}}">Annuleren</button>
+                        <button id="cancel-loser" type="button" class="btn btn-outline-secondary ripple text-left" data-dismiss="modal"><input name="points" type="hidden" value="{{$player->point_count}}">Annuleren</button>
                         <li>
                             
                         </li>
@@ -75,6 +75,23 @@
 @push('footer-scripts')
 <script>
         jQuery(document).ready(function($) {
+            $(document).on('keypress',function(e) {
+                if(e.keyCode == 114) {
+                    $('#position-1').click();
+                    var position = 'right';
+                }
+                else if(e.keyCode == 108) {
+                    $('#position-0').click();
+                    var position = 'left';
+                }
+                $(document).on('keypress',function(e) {
+                    if((e.keyCode == 114 && position == 'right') || (e.keyCode == 108 && position == 'left')) {
+                        $('#submit-loser').click();
+                    } else {
+                        $('#cancel-loser').click();
+                    }
+                });
+            });
             $('.exit-btn').click(function() {
                 var id = $(this).data('id');
                 var name = $(this).data('name');

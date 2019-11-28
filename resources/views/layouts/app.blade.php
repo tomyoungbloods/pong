@@ -26,7 +26,7 @@
 </head>
 
 <body class="sidebar-dark sidebar-collapse content-dark navbar-brand-dark right-sidebar-dark" onload="startTime()">
-    <div id="wrapper" class="wrapper">
+    <div id="wrapper" class="wrapper bg-knock-out-img">
         <!-- HEADER & TOP NAVIGATION -->
         <nav class="navbar">
             <!-- Logo Area -->

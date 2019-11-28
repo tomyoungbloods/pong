@@ -7,20 +7,20 @@
 @section('description', '')
 @section('content')
 @php ($i = 0)
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid bg-knock-out">
+    <div class="row full-height">
         @php ($i = 0)
         @foreach($checkedin as $player)
         @if($i < 3)
-            <div class="col-3">
-                <div class="widget-holder">
+            <div class="col-3 knock-out-place{{ $loop->iteration }}">
+                <div class="widget-holder knock-out-position">
                         <div class="checkin-plaats">
                                 <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
                                 <div class="checkin-image-4col">
                                     <img src="{{ $player['avatar_url'] }}">
                                 </div>
-                                <div class="checkin-plaats">
-                                    <div class="checkin-naam">
+                                <div class="knock-out-naam-wrapper">
+                                    <div class="knock-out-naam">
                                         <div class="naambox" id="opstelling-{{ $loop->iteration }}">
                                             {{$player->name}} {{ $player->point_count }}
                                         </div> 

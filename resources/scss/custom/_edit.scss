@@ -1,14 +1,4 @@
-.checkin-image-4col > img{
-    object-fit: cover;
-    border-radius: 10px 10px 0px 0px;
-    width: 100%;
-}
 
-.checkin-image-4col {
-    
-    object-fit: cover;
-    border-radius: 10px 10px 0px 0px;
-}
 
 form{
     margin-block-end: 0;
@@ -25,43 +15,9 @@ label#naam-check {
     min-width: 100%;
 
 }
-.checkin-plaats {
-    font-family: "Montserrat" ;
-    font-weight: 700;
-    border-radius: 10px 10px 10px 10px;
-    display: flex;
-    align-items: flex-end;
-    a{
-        width: 100%;
-    }
-}
 
 
-.checkin-image > img {
-    width: 100%;    
-    object-fit: cover;
-    border-radius: 10px 10px 0px 0px;
-}
 
-.checkin-naam {
-    font-size: 20px;
-    font-family: "Montserrat" ;
-    color: #fff;
-    font-weight: 700;
-    min-width: 100%;
-    text-align: center;
-}
-
-.naambox {
-    font-size: 16px;
-    font-family: "Montserrat";
-    color: #fff;
-    font-weight: 700;
-    width: 100%;
-    padding: 10px; 
-    background: #16191C;
-    border-radius: 0px 0px 10px 10px;
-}
 
 // @media only screen 
 // and (min-width : 768px) 

@@ -1,0 +1,97 @@
+.knock-out-naam {
+    font-size: 20px;
+    font-family: "Montserrat";
+    color: #fff;
+    font-weight: 700;
+    min-width: 100%;
+    text-align: center;
+}
+
+div#opstelling-1{
+    background: #fff  !important;
+    color: #16191C ;
+    margin-bottom: 50px;
+}
+
+div#opstelling-2 {
+    background: #E20E23  !important;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.checkin-image-4col > img{
+    object-fit: cover;
+    border-radius: 0px;
+    width: 100%;
+}
+
+.checkin-image-4col {
+    
+    object-fit: cover;
+    border-radius: 0px;
+}
+
+.knock-out-place1 {
+    min-width: 33%;
+    flex: 0 0 33%;
+    order: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .checkin-plaats {
+    width: 100%;
+    }
+}
+
+.knock-out-place2 {
+    min-width: 33%;
+    flex: 0 0 33%;
+    order: 3;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .checkin-plaats {
+        width: 100%;
+        }
+    
+}
+
+.knock-out-place3 {
+    min-width: 33%;
+    flex: 0 0 33%;
+    order: 2;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .checkin-plaats {
+        width: 60%;
+        }
+        .knock-out-position{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .checkin-image-4col > img{
+            border-radius: 126px;
+        }
+        .naambox{
+            display: none;
+        }
+}
+
+.full-height {
+    height: 80vh;
+    height: 100%;
+}
+
+.knock-out-position{
+    width: 60%;
+}
+
+.bg-knock-out{
+    background-image: url("/img/bg.png");
+    background-size: contain;
+    background-position: center center;
+    height: 92vh;
+}
+

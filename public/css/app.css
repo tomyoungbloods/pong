@@ -272,6 +272,9 @@ div#opstelling-3 {
 .modal-body {
   color: #fff; }
 
+.active {
+  border: 10px solid red; }
+
 button.btn.btn-ping-pong {
   background-color: #FDD50B;
   border-radius: 10px;

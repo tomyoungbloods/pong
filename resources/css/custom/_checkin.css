@@ -5,4 +5,7 @@
 .modal-body {
   color: #fff; }
 
+.active {
+  border: 10px solid red; }
+
 /*# sourceMappingURL=_checkin.css.map */

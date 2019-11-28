@@ -8,15 +8,15 @@
                 $open_row = false;
                 $close_row = false;
                 
-                if($loop->iteration % 6 == 1) {
+                if($loop->iteration % 9 == 1) {
                     $open_row = true;
                 }
-                if($loop->iteration % 6 == 0) {
+                if($loop->iteration % 9 == 0) {
                     $close_row = true;
                 }
-                $tab_index = 0;
+                $active_class = " ";
                 if($loop->first) {
-                    $tab_index = "active";
+                    $active_class = "active";
                 }
             @endphp
             @if ($open_row)
@@ -26,7 +26,7 @@
                     $column_counter = 1;
                 @endphp
             @endif
-                <td id="l0{{ $row_counter - 1 }}_{{ $column_counter }}" class="{{ $tab_index }}">
+                <td id="l0{{ $row_counter - 1 }}_{{ $column_counter }}" class="{{ $active_class }}">
                         <div class="checkin-plaats move" tabindex="0">
                             <div class="checkin-naam">
                                 <a data-id="{{ $player->id }}" class="player-btn player-{{ $loop->iteration }}" href="#">

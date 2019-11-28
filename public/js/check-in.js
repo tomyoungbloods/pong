@@ -10,84 +10,88 @@ function getAllPlayers() {
         url: '/ajax/players/get-all',
         method:'POST',
         success: function(response) {
-            $('#players-loaded').empty().append(response);
-            checkInPlayerClick();
-
-
-            
             var myTable = jQuery('#myTable');
-            jQuery('body').keydown(function(){
+            
+            $('#players-loaded').empty().append(response);
+            $(document).on('keydown', function(){
+            
+                var numberOfCells = jQuery('#myTable td').length;
+                var currentElement = jQuery('td.active');
 
-            var numberOfCells = jQuery('#myTable td').length;
-            var currentElement = jQuery('td.active');
+                console.log(event.keyCode);
+                
 
-            if(event.keyCode == 37) {
+                if(event.keyCode == 37) {
 
-                var currentID = currentElement.attr('id').split('');
-                currentID.splice(currentID.length-1, 1, +currentID[currentID.length - 1]-1);
+                    var currentID = currentElement.attr('id').split('');
+                    currentID.splice(currentID.length-1, 1, +currentID[currentID.length - 1]-1);
 
-                var newID = currentID.join('');
-                var newElement = jQuery('#' + newID);
+                    var newID = currentID.join('');
+                    var newElement = jQuery('#' + newID);
 
-                if( newElement.length ){
-                    currentElement.removeClass('active');
-                    newElement.addClass('active');
-                } else {
-                    console.log('not found');
+                    if( newElement.length ){
+                        currentElement.removeClass('active');
+                        newElement.addClass('active');
+                    } else {
+                        console.log('not found');
+                    }
+
                 }
 
-            }
+                else if (event.keyCode == 39) {
 
-            else if (event.keyCode == 39) {
+                    var currentID = currentElement.attr('id').split('');
+                    currentID.splice(currentID.length-1, 1, +currentID[currentID.length - 1]+1);
 
-                var currentID = currentElement.attr('id').split('');
-                currentID.splice(currentID.length-1, 1, +currentID[currentID.length - 1]+1);
+                    var newID = currentID.join('');
+                    var newElement = jQuery('#' + newID);
 
-                var newID = currentID.join('');
-                var newElement = jQuery('#' + newID);
+                    if( newElement.length ){
+                        currentElement.removeClass('active');
+                        newElement.addClass('active');
+                    } else {
+                        console.log('not found');
+                    }
 
-                if( newElement.length ){
-                    currentElement.removeClass('active');
-                    newElement.addClass('active');
-                } else {
-                    console.log('not found');
+
+                }
+                
+                else if (event.keyCode == 38) {
+
+                    var currentID = currentElement.attr('id').split('');
+                    currentID.splice(2,1, +currentID[2]-1);
+
+                    var newID = currentID.join('');
+                    var newElement = jQuery('#' + newID);
+
+                    if( newElement.length ){
+                        currentElement.removeClass('active');
+                        newElement.addClass('active');
+                    } else {
+                        console.log('not found');
+                    }
+
+                }
+                else if (event.keyCode == 40) {
+
+                    var currentID = currentElement.attr('id').split('');
+                    currentID.splice(2,1, +currentID[2]+1);
+
+                    var newID = currentID.join('');
+                    var newElement = jQuery('#' + newID);
+
+                    if( newElement.length ){
+                        currentElement.removeClass('active');
+                        newElement.addClass('active');
+                    } else {
+                        console.log('not found');
+                    }
+
                 }
 
-
-            }
-               
-            else if (event.keyCode == 38) {
-
-                var currentID = currentElement.attr('id').split('');
-                currentID.splice(2,1, +currentID[2]-1);
-
-                var newID = currentID.join('');
-                var newElement = jQuery('#' + newID);
-
-                if( newElement.length ){
-                    currentElement.removeClass('active');
-                    newElement.addClass('active');
-                } else {
-                    console.log('not found');
-                }
-
-            }
-            else if (event.keyCode == 40) {
-
-                var currentID = currentElement.attr('id').split('');
-                currentID.splice(2,1, +currentID[2]+1);
-
-                var newID = currentID.join('');
-                var newElement = jQuery('#' + newID);
-
-                if( newElement.length ){
-                    currentElement.removeClass('active');
-                    newElement.addClass('active');
-                } else {
-                    console.log('not found');
-                }
-
-            }
+                else if (event.keyCode == 82) { //Enter keycode
+                    checkInPlayerSubmit($('td.active .player-btn').data('id'));
+                }  
 
             });
             
@@ -113,20 +117,17 @@ function checkInPlayerSubmit(id) {
         data: {id: id},
         success: function(response) {
             console.log(response);
+            $(document).off('keydown');
             getAllPlayers();
         },
         errors: function(response) {
             alert(response);
             console.log(response);
+            
         }
     });
 }
 
-function checkInPlayerClick() {
-    $('.player-btn').on('click', function() {
-        checkInPlayerSubmit($(this).data('id'));
-    });
-}
 
 jQuery(document).ready(function($) {
     getAllPlayers();

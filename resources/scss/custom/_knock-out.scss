@@ -89,8 +89,8 @@ div#opstelling-2 {
 }
 
 .full-height {
-    height: 80vh;
-    height: 100%;
+    height: calc(100vh - 80px);
+    justify-content: space-between;
 }
 
 .knock-out-position{

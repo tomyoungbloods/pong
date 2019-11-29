@@ -557,8 +557,10 @@ div#opstelling-2 {
     display: none; }
 
 .full-height {
-  height: 80vh;
-  height: 100%; }
+  height: calc(100vh - 80px);
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
 
 .knock-out-position {
   width: 60%; }

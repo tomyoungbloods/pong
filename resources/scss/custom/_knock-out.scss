@@ -32,8 +32,8 @@ div#opstelling-2 {
 }
 
 .knock-out-place1 {
-    min-width: 33%;
-    flex: 0 0 33%;
+    min-width: 33.3%;
+    flex: 0 0 33.3%;
     order: 1;
     justify-content: center;
     align-items: center;
@@ -41,11 +41,14 @@ div#opstelling-2 {
     .checkin-plaats {
     width: 100%;
     }
+    .checkin-image-4col{
+        border: 10px solid white;
+    }   
 }
 
 .knock-out-place2 {
-    min-width: 33%;
-    flex: 0 0 33%;
+    min-width: 33.3%;
+    flex: 0 0 33.3%;
     order: 3;
     justify-content: center;
     align-items: center;
@@ -53,16 +56,21 @@ div#opstelling-2 {
     .checkin-plaats {
         width: 100%;
         }
+    .checkin-image-4col{
+        border: 10px solid #E20E23  ;
+    }  
     
 }
 
 .knock-out-place3 {
-    min-width: 33%;
-    flex: 0 0 33%;
+    min-width: 33.3%;
+    flex: 0 0 33.3%;
     order: 2;
     justify-content: center;
     align-items: center;
     display: flex;
+    
+
     .checkin-plaats {
         width: 60%;
         }
@@ -73,6 +81,7 @@ div#opstelling-2 {
         }
         .checkin-image-4col > img{
             border-radius: 126px;
+            border: 10px solid #121212; 
         }
         .naambox{
             display: none;
@@ -92,6 +101,10 @@ div#opstelling-2 {
     background-image: url("/img/bg.png");
     background-size: contain;
     background-position: center center;
-    height: 92vh;
+    height: calc(100vh - 80px);
+}
+#playor-count {
+    position: fixed;
+    bottom: 0;
 }
 

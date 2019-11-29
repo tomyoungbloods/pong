@@ -32,7 +32,15 @@
             </div>   
             @endif   
             @php ($i++)  
-        @endforeach
+        @endforeach        
+    </div>
+    <div id="playor-count" class="row">
+        <div class="col-md-12 widget-body">
+            Aantal spelers nu: {{$active_players_count}}
+        </div>
+    </div>
+    
+    
     </div>
     <div class="modal modal-danger fade bs-modal-md" tabindex="-1" role="dialog" aria-labelledby="exitModalLabel" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-md">
@@ -61,10 +69,6 @@
                 <!-- /.modal-content -->
             </div>
         <!-- /.modal-dialog -->
-        </div>
-    </div>
-        <div class="row">
-        Aantal spelers nu: {{$active_players_count}}
         </div>
 </div>
 </div>

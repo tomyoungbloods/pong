@@ -44,22 +44,6 @@
             @if ($close_row)
                 </tr>
             @endif
-            {{-- <div class="col-sm-2">
-                <div class="widget-holder">
-                    <div class="checkin-plaats move" tabindex="0">
-                        <div class="checkin-naam">
-                            <a data-id="{{ $player->id }}" class="player-btn player-{{ $loop->iteration }}" href="#">
-                                    <div class="checkin-image">
-                                            <img src="{{ $player['avatar_url'] }}">
-                                    </div>
-                                <div class="naambox @if($player->checked)checked-in @endif">
-                                {{$player->name}}
-                                </div>
-                            </a>
-                        </div> 
-                    </div>
-                </div>
-            </div> --}}
         @endforeach 
     </table>
 </div>

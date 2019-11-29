@@ -114,6 +114,16 @@
             return false;
         });
     });
+    jQuery(document).ready(function($) {
+        var check = false;
+        $(document).on('keypress',function(e) {
+
+            if(e.keyCode == 114) { // && e.keyCode == 108
+                window.location = '{{ route('check-in') }}';
+            }
+
+        });
+    });  
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 @endpush

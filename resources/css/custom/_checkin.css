@@ -27,7 +27,8 @@
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  border-radius: 0px; }
+  border-radius: 0px;
+  max-width: 200px; }
 
 .checkin-naam {
   font-size: 20px;

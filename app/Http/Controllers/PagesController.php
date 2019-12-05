@@ -303,7 +303,7 @@ class PagesController extends Controller
          }
 
          // if position 1 is out, switch pos 1 and pos 2 in array $updated_peoples
-         if($pos == 0) {
+         if($pos == 0 && count($updated_peoples) > 1) {
              $temp = $updated_peoples[0];
              $updated_peoples[0] = $updated_peoples[1];
              $updated_peoples[1] = $temp;

@@ -12,7 +12,7 @@
         @php ($i = 0)
         @foreach($checkedin as $player)
         @if($i < 3)
-            <div class="col-3 knock-out-place{{ $loop->iteration }}">
+            <div class="col-3 knock-out-place{{ $loop->iteration }} @if(count($checkedin) < 2)winner-layout @endif">
                 <div id="switch-{{ $loop->iteration }}" class="widget-holder knock-out-position">
                         <div class="checkin-plaats">
                                 <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-target=".bs-modal-md" class="exit-btn">
@@ -77,6 +77,13 @@
 
 @endsection
 @push('footer-scripts')
+<script src="js/confetti.js"></script>
+@if(count($checkedin) < 2)
+    
+<script>
+        startConfetti();
+</script>
+@endif
 <script>
         jQuery(document).ready(function($) {
             var check = false;
@@ -126,4 +133,7 @@
 
         });
     </script>
+    
+    
+  
 @endpush

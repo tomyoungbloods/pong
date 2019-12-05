@@ -108,3 +108,55 @@ div#opstelling-2 {
     bottom: 0;
 }
 
+
+
+.col-3.knock-out-place1.winner-layout {
+    width: 100%;
+    max-width: 100% !important;
+    flex: 0 0 100%; 
+    .knock-out-position {
+        width: 26%;
+    }
+    .checkin-image-4col {
+        border: 10px solid #E3B524;
+    }
+    div#opstelling-1 {
+        background: #E3B524 !important;
+        color: #202020;
+        margin-bottom: 50px;
+    }
+    .naambox {
+        font-size: 30px;
+        font-weight: 900;
+    }
+    div#switch-1::before {
+        content: "En de winnaar is...";
+        font-size: 41px;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+    }
+    div#switch-1::after {
+        content: "- Druk op de WITTE knop om het potje te eindigen - ";
+        font-size: 20px;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+[class|="confetti"] {
+    position: absolute;
+  }
+  
+  .red {
+    background-color: #E3B524;
+  }
+  
+  .yellow {
+    background-color: #F9BD15;
+  }
+  
+  .blue {
+    background-color: #DBA112;
+  }

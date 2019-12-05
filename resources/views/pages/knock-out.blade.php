@@ -13,9 +13,9 @@
         @foreach($checkedin as $player)
         @if($i < 3)
             <div class="col-3 knock-out-place{{ $loop->iteration }}">
-                <div class="widget-holder knock-out-position">
+                <div id="switch-{{ $loop->iteration }}" class="widget-holder knock-out-position">
                         <div class="checkin-plaats">
-                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-target=".bs-modal-md" class="exit-btn">
+                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-target=".bs-modal-md" class="exit-btn">
                                 <div class="checkin-image-4col">
                                     <img src="{{ $player['avatar_url'] }}">
                                 </div>
@@ -116,9 +116,11 @@
                 var id = $(this).data('id');
                 var name = $(this).data('name');
                 var points = $(this).data('points');
+                var pos = $(this).data('pos');
+
                 $('.exit-player').empty().text(name);
                 $('.exit-points').empty().text(points);
-                $('#exit-form').attr('action', '/knock-out/' + id);
+                $('#exit-form').attr('action', '/knock-out/' + id + '/' + pos);
                 $('#exit-points-val').val(points);
             });
 

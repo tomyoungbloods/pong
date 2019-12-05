@@ -271,7 +271,7 @@ class PagesController extends Controller
         return view('pages.knock-out', with($data));
     }
 
-    public function updateKnockout(Request $request, Player $player, $id)
+    public function updateKnockout(Request $request, Player $player, $id, $pos)
     {    
         // Retrieve player
         $player = Player::find($id);
@@ -301,6 +301,14 @@ class PagesController extends Controller
               $updated_peoples[] = $player_old;
             }
          }
+
+         // if position 1 is out, switch pos 1 and pos 2 in array $updated_peoples
+         if($pos == 0) {
+             $temp = $updated_peoples[0];
+             $updated_peoples[0] = $updated_peoples[1];
+             $updated_peoples[1] = $temp;
+         }
+
          $new_game_info = [
            'checkedin' => $updated_peoples,
            'count_before' => $start_checked_in,

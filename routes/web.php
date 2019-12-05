@@ -33,7 +33,7 @@ Route::group([], function() {
     Route::get('/check-in', 'PagesController@checkIn')->name('check-in'); // Check in for the knock out round
     Route::get('/knock-out', 'PagesController@knockOut')->name('knock-out'); // Start Knock out
     Route::get('/session-builder', 'PagesController@sessionBuilder')->name('sessionBuilder'); //Build session and redirect to Knock out view
-    Route::patch('/knock-out/{id}', 'PagesController@updateKnockout'); // Update speler in de game
+    Route::patch('/knock-out/{id}/{pos}', 'PagesController@updateKnockout'); // Update speler in de game
 });
 
 Route::group(['prefix' => 'competition'], function() {

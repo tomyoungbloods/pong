@@ -14,8 +14,8 @@
         @if($i < 3)
             <div class="col-3 knock-out-place{{ $loop->iteration }} @if(count($checkedin) < 2)winner-layout @endif">
                 <div id="switch-{{ $loop->iteration }}" class="widget-holder knock-out-position">
-                        <div class="checkin-plaats">
-                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-target=".bs-modal-md" class="exit-btn">
+                        <div class="checkin-plaats" id="ratio">
+                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-ratio{{ $loop->iteration }}="{{ $player->points_ratio}}" data-target=".bs-modal-md" class="exit-btn">
                                 <div class="checkin-image-4col">
                                     <img src="{{ $player['avatar_url'] }}">
                                 </div>
@@ -24,6 +24,10 @@
                                         <div class="naambox" id="opstelling-{{ $loop->iteration }}">
                                             {{$player->name}} {{ $player->point_count }}
                                         </div> 
+                                        <div class="">
+                                        RATIO: {{ $player->points_ratio}}<br>
+                                        QUOTERING WINST: <div class="quotering-{{ $loop->iteration }}">ss</div>
+                                        </div>
                                     </div> 
                                 </div>
                             </a>
@@ -124,12 +128,18 @@
                 var name = $(this).data('name');
                 var points = $(this).data('points');
                 var pos = $(this).data('pos');
-
+                
                 $('.exit-player').empty().text(name);
                 $('.exit-points').empty().text(points);
                 $('#exit-form').attr('action', '/knock-out/' + id + '/' + pos);
                 $('#exit-points-val').val(points);
             });
+
+
+            var ratio1 = $('#position-0').attr('data-ratio1');
+            var ratio2 = $('#position-1').attr('data-ratio2');
+            $('.quotering-1').html(ratio2 / ratio1); 
+            $('.quotering-2').html(ratio1 / ratio2); 
 
         });
     </script>

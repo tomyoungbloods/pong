@@ -268,6 +268,7 @@ class PagesController extends Controller
             'active_players_count' => $dataSession['active_players_count'],
         ];
 
+        
         return view('pages.knock-out', with($data));
     }
 
@@ -287,11 +288,16 @@ class PagesController extends Controller
           $player->checked = 0; 
           $point = new Point;
           // Set PlayerPoint attributes
-          $point->points = $request->points;
           $point->player_id = $player->id;
+          // calculate points
+          // $request->points * avg(ratio)
+          $point->points = $request->points;
           $point->save();
           }
         $player->save();
+
+        // Update ratio count Player not knocked out
+        // (ratio_count = ratio_count + player_ratio)
 
        
         // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array

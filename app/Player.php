@@ -40,6 +40,25 @@ class Player extends Model
 
         return $this->getTotalPoints();
     }
+
+    protected function getPointsRatio(){
+        $points = $this->points;
+        $count = $points->count();
+
+        $total = 0;
+        foreach($points as $point) {
+            $total = $total + $point->points;
+            $ratio = round(($total / $count), 2); 
+        }
+
+        return $ratio;
+    }
+
+    public function getPointsRatioAttribute() {
+        
+        return $this->getPointsRatio();
+    }
+    
     
     protected function getTotalPauzePrices() {
         return Winner::where([['winner_category_id', 1],['player_id', $this->id],])->get()->count();

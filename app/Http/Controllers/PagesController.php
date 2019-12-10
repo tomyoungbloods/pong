@@ -91,6 +91,7 @@ class PagesController extends Controller
           $player->avatar_url = $player->avatar_url;      
           $player->last_four_games = $player->last_four_games;
           $player->total_pauze_prices = $player->total_pauze_prices;
+          $player->points_ratio = $player->points_ratio;
         } 
         //Sorteer aantal spelers op de behaalde punten
         $players = collect($players->toArray())->sortByDesc('points_in_period');
@@ -132,7 +133,6 @@ class PagesController extends Controller
             'topOfTable_all_time' => $topOfTable_all_time,
           ]; 
 
-       
         return view('pages.competition')->with($array);
     }
 

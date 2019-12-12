@@ -16,17 +16,19 @@
                 <div id="switch-{{ $loop->iteration }}" class="widget-holder knock-out-position">
                         <div class="checkin-plaats" id="ratio">
                                 <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-ratio{{ $loop->iteration }}="{{ $player->points_ratio}}" data-target=".bs-modal-md" class="exit-btn">
-                                <div class="checkin-image-4col">
-                                    <img src="{{ $player['avatar_url'] }}">
-                                </div>
+                                    <div class="naambox" id="opstelling-{{ $loop->iteration }}">
+                                            <div class="naam-flex">{{$player->name}}</div>
+                                            <div class="quotering-{{ $loop->iteration }}">{{$player->quotering}}</div>
+                                    </div> 
+                                    <div class="checkin-image-4col">
+                                        <img src="{{ $player['avatar_url'] }}">
+                                    </div>
                                 <div class="knock-out-naam-wrapper">
                                     <div class="knock-out-naam">
-                                        <div class="naambox" id="opstelling-{{ $loop->iteration }}">
-                                            {{$player->name}} {{ $player->point_count }}
-                                        </div> 
-                                        <div class="">
+                                                                
+                                        <div>
                                         RATIO: {{ $player->points_ratio}}<br>
-                                        QUOTERING WINST: <div class="quotering-{{ $loop->iteration }}">ss</div>
+                                        POINT COUNT:  {{ $player->point_count }}
                                         </div>
                                     </div> 
                                 </div>
@@ -136,10 +138,16 @@
             });
 
 
-            var ratio1 = $('#position-0').attr('data-ratio1');
-            var ratio2 = $('#position-1').attr('data-ratio2');
-            $('.quotering-1').html(ratio2 / ratio1); 
-            $('.quotering-2').html(ratio1 / ratio2); 
+            // var ratio1 = $('#position-0').attr('data-ratio1');
+            // var ratio2 = $('#position-1').attr('data-ratio2');
+            // var totaal1 = ratio2 / ratio1
+            // var totaal2 = ratio1 / ratio2
+
+            // var priceString1 = totaal1.toFixed(2);
+            // var priceString2 = totaal2.toFixed(2);
+
+            // $('.quotering-1').html(priceString1); 
+            // $('.quotering-2').html(priceString2); 
 
         });
     </script>

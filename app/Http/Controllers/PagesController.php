@@ -217,6 +217,14 @@ class PagesController extends Controller
     public function sessionBuilder()
     {
         $checkedin = Player::where('checked', '1')->get()->shuffle();
+
+        //Haal voor elke individuele player uit de andere dataset de total_points en avatar_url
+        foreach($checkedin as $player) {
+            $player->last_four_games = $player->last_four_games;
+            $player->total_pauze_prices = $player->total_pauze_prices;
+            $player->points_ratio = $player->points_ratio;
+          } 
+
         //Tel de inhoud van de count array
         $countArray = count($checkedin);
 
@@ -261,6 +269,23 @@ class PagesController extends Controller
             }
         }
 
+        // Calculate quotering
+        $i = 0;
+        foreach($dataSession['players'] as $player) {
+            if(count($dataSession['players']) > 1) {
+                if($i < 2) {
+                    if($i == 0) {
+                        $quot = round(($dataSession['players'][1]->points_ratio / $dataSession['players'][0]->points_ratio), 2);
+                    }
+                    if($i == 1) {
+                        $quot = round(($dataSession['players'][0]->points_ratio / $dataSession['players'][1]->points_ratio), 2);
+                    }
+                    $player->quotering = $quot;
+                    $i = $i + 1;
+                }
+            }
+        }
+
         $checkedin = $dataSession['players'];
 
         $data = [
@@ -268,7 +293,7 @@ class PagesController extends Controller
             'active_players_count' => $dataSession['active_players_count'],
         ];
 
-        
+      
         return view('pages.knock-out', with($data));
     }
 

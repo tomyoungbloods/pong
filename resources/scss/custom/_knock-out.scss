@@ -10,13 +10,11 @@
 div#opstelling-1{
     background: #fff  !important;
     color: #16191C ;
-    margin-bottom: 50px;
 }
 
 div#opstelling-2 {
     background: #E20E23  !important;
     color: #fff;
-    margin-bottom: 50px;
 }
 
 .checkin-image-4col > img{
@@ -123,7 +121,6 @@ div#opstelling-2 {
     div#opstelling-1 {
         background: #E3B524 !important;
         color: #202020;
-        margin-bottom: 50px;
     }
     .naambox {
         font-size: 30px;
@@ -160,3 +157,22 @@ div#opstelling-2 {
   .blue {
     background-color: #DBA112;
   }
+
+   .quotering-2, .quotering-1 {
+    width: 87px;
+    background: #202020;
+    padding: 9px;
+    color: #fff;
+}
+
+div#opstelling-1, div#opstelling-2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.naam-flex {
+    font-size: 22px;
+}

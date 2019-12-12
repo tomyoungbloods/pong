@@ -648,6 +648,9 @@ div#opstelling-1, div#opstelling-2 {
 .naam-flex {
   font-size: 22px; }
 
+#position-2 .knock-out-naam {
+  display: none; }
+
 /* Media Queries */
 /* Placeholder */
 /* Set Margin & Padding */

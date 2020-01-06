@@ -52,7 +52,10 @@ class Player extends Model
             $total = 0;
             foreach($points as $point) {
                 $total = $total + $point->points;
-                $ratio = round(($total / $count), 2); 
+                $ratio = round(($total / $count), 2);
+                if($ratio == 0) {
+                    $ratio = 1;
+                }
             }
         }
 

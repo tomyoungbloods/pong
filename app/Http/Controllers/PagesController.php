@@ -300,36 +300,27 @@ class PagesController extends Controller
 
     public function updateKnockout(Request $request, Player $player, $id, $pos)
     {    
-        
-        // $player = Player::find($id);
-
-        //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
-        $sessie  = Session::get('game_info');
-
-        
-        // Retrieve player
-        $player = $collect_players->where('id', $id)->first();
-        
-        dd($player);
-        $start_checked_in = Session::get('game_info')['count_before'];
-        //Maak alvast een array aan voor de geupdate peoples
-        $updated_peoples = [];
-        //Start de functie aanwezig
-        if(request('checked')){
-          $player->checked = 1;
-          $player->quotering_count = $player->quotering;
-        } else {
-          $player->checked = 0; 
-          $point = new Point;
-          // Set PlayerPoint attributes
-          $point->player_id = $player->id;
-          // calculate points
-          $point->points = $request->points;
-          
-          $point->save();
-          }
-        $player->save();
-        dd($player);
+               // Retrieve player
+               $player = Player::find($id);
+               //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
+               $sessie  = Session::get('game_info')['checkedin'];
+               $start_checked_in = Session::get('game_info')['count_before'];
+               //Maak alvast een array aan voor de geupdate peoples
+               $updated_peoples = [];
+               //Start de functie aanwezig
+               if(request('checked')){
+                 $player->checked = 1;
+               } else {
+                 $player->checked = 0; 
+                 $point = new Point;
+                 // Set PlayerPoint attributes
+                 $point->player_id = $player->id;
+                 // calculate points
+                 // $request->points * avg(ratio)
+                 $point->points = $request->points;
+                 $point->save();
+                 }
+               $player->save();
 
         // Update ratio count Player not knocked out
         // (ratio_count = ratio_count + player_ratio)

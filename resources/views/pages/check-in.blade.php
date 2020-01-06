@@ -3,7 +3,7 @@
 @push('header-css')
 @endpush
 
-@section('title', 'Standing')
+@section('title', 'Check-in')
 @section('description', '')
 @section('content')
 

@@ -28,7 +28,7 @@
                                                                 
                                         <div>
                                         RATIO: {{ $player->points_ratio}}<br>
-                                        POINT COUNT:  {{ $player->point_count }}
+                                        POINT COUNT:  {{ $player->quotering_count }}
                                         </div>
                                     </div> 
                                 </div>

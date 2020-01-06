@@ -276,10 +276,18 @@ class PagesController extends Controller
             if(count($dataSession['players']) > 1) {
                 if($i < 2) {
                     if($i == 0) {
-                        $quot = round(($dataSession['players'][1]->points_ratio / $dataSession['players'][0]->points_ratio), 2);
+                        if($dataSession['players'][0]->points_ratio != 0) {
+                            $quot = round(($dataSession['players'][1]->points_ratio / $dataSession['players'][0]->points_ratio), 2);
+                        } else {
+                            $quot = 1;
+                        }
                     }
                     if($i == 1) {
-                        $quot = round(($dataSession['players'][0]->points_ratio / $dataSession['players'][1]->points_ratio), 2);
+                        if($dataSession['players'][1]->points_ratio != 0) {
+                            $quot = round(($dataSession['players'][0]->points_ratio / $dataSession['players'][1]->points_ratio), 2);
+                        } else {
+                            $quot = 1;
+                        }                        
                     }
                     $player->quotering = $quot;
                     $i = $i + 1;
@@ -294,7 +302,6 @@ class PagesController extends Controller
             'active_players_count' => $dataSession['active_players_count'],
         ];
 
-      
         return view('pages.knock-out', with($data));
     }
 
@@ -304,27 +311,31 @@ class PagesController extends Controller
                $player = Player::find($id);
                //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
                $sessie  = Session::get('game_info')['checkedin'];
+               $player_collection = collect($sessie);
                $start_checked_in = Session::get('game_info')['count_before'];
                //Maak alvast een array aan voor de geupdate peoples
                $updated_peoples = [];
                //Start de functie aanwezig
                if(request('checked')){
                  $player->checked = 1;
+                 $quotering = $player->quotering;  
                } else {
                  $player->checked = 0; 
+                 $dikke_bmw = $player_collection->where('id', $player->id)->first();
+                //  dd($dikke_bmw);
                  $point = new Point;
                  // Set PlayerPoint attributes
                  $point->player_id = $player->id;
                  // calculate points
                  // $request->points * avg(ratio)
-                 $point->points = $request->points;
+                 $point->points = ceil($dikke_bmw->quotering_count);
                  $point->save();
                  }
+
                $player->save();
-
-        // Update ratio count Player not knocked out
-        // (ratio_count = ratio_count + player_ratio)
-
+       
+                // // Update ratio count Player not knocked out
+                // $ratio_count = $ratio_count + $player_ratio;
        
         // Wanneer de oude players id niet overeenkomt met de nieuwe players id update dan de peoples array
         foreach($sessie as $player_old) {
@@ -333,6 +344,8 @@ class PagesController extends Controller
               $updated_peoples[] = $player_old;
             }
          }
+         $quote_rate_current = 0;
+         $updated_peoples[0]->quotering_count = $updated_peoples[0]->quotering_count + $updated_peoples[0]->quotering;
 
          // if position 1 is out, switch pos 1 and pos 2 in array $updated_peoples
          if($pos == 0 && count($updated_peoples) > 1) {

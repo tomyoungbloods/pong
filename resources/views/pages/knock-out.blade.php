@@ -15,7 +15,7 @@
             <div class="col-3 knock-out-place{{ $loop->iteration }} @if(count($checkedin) < 2)winner-layout @endif">
                 <div id="switch-{{ $loop->iteration }}" class="widget-holder knock-out-position">
                         <div class="checkin-plaats" id="ratio">
-                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->point_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-ratio{{ $loop->iteration }}="{{ $player->points_ratio}}" data-target=".bs-modal-md" class="exit-btn">
+                                <a href="#" id="position-{{ $i }}" data-id="{{$player->id}}" data-points="{{ $player->quotering_count }}" data-name="{{$player->name}}"  data-toggle="modal" data-pos="{{ $i }}" data-ratio{{ $loop->iteration }}="{{ $player->points_ratio}}" data-target=".bs-modal-md" class="exit-btn">
                                     <div class="naambox" id="opstelling-{{ $loop->iteration }}">
                                             <div class="naam-flex">{{$player->name}}</div>
                                             <div class="quotering-{{ $loop->iteration }}">{{$player->quotering}}</div>
@@ -60,7 +60,7 @@
                         <p>Klopt dit?</p>
                     </div>
                     <div class="modal-footer">
-                        <form id="exit-form" action=""  value="{{ ceil($player->quotering_count) }}" method="POST">
+                        <form id="exit-form" action="" method="POST">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" id="exit-points-val" name="points">
@@ -132,7 +132,7 @@
                 var pos = $(this).data('pos');
                 
                 $('.exit-player').empty().text(name);
-                $('.exit-points').empty().text(points);
+                $('.exit-points').empty().text(Math.ceil(points));
                 $('#exit-form').attr('action', '/knock-out/' + id + '/' + pos);
                 $('#exit-points-val').val(points);
             });

@@ -45,11 +45,15 @@ class Player extends Model
         $points = $this->points;
         $count = $points->count();
 
-        $total = 1;
-        $ratio = 1;
-        foreach($points as $point) {
-            $total = $total + $point->points;
-            $ratio = round(($total / $count), 2); 
+        if(count($points) == 0) {
+            $total = 1;
+            $ratio = 1;            
+        } else {
+            $total = 0;
+            foreach($points as $point) {
+                $total = $total + $point->points;
+                $ratio = round(($total / $count), 2); 
+            }
         }
 
         return $ratio;

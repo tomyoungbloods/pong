@@ -580,28 +580,18 @@ div#opstelling-2 {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%; }
   .col-3.knock-out-place1.winner-layout .knock-out-position {
-    width: 26%; }
+    width: 22%; }
   .col-3.knock-out-place1.winner-layout .checkin-image-4col {
-    border: 10px solid #E3B524; }
+    border: 10px solid #fff; }
   .col-3.knock-out-place1.winner-layout div#opstelling-1 {
-    background: #E3B524 !important;
+    background: #fff !important;
     color: #202020; }
   .col-3.knock-out-place1.winner-layout .naambox {
     font-size: 30px;
     font-weight: 900; }
-  .col-3.knock-out-place1.winner-layout div#switch-1::before {
-    content: "En de winnaar is...";
-    font-size: 30px;
-    font-weight: 800;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center; }
   .col-3.knock-out-place1.winner-layout div#switch-1::after {
-    content: "- Druk op de WITTE knop om het potje te eindigen - ";
-    font-size: 20px;
+    content: "- Druk op de WITTE knop - ";
+    font-size: 22px;
     font-weight: 800;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -609,18 +599,8 @@ div#opstelling-2 {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center; }
-
-[class|="confetti"] {
-  position: absolute; }
-
-.red {
-  background-color: #E3B524; }
-
-.yellow {
-  background-color: #F9BD15; }
-
-.blue {
-  background-color: #DBA112; }
+  .col-3.knock-out-place1.winner-layout .knock-out-naam {
+    display: none; }
 
 .quotering-2, .quotering-1 {
   width: 87px;

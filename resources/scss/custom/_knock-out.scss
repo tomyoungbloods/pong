@@ -113,50 +113,31 @@ div#opstelling-2 {
     max-width: 100% !important;
     flex: 0 0 100%; 
     .knock-out-position {
-        width: 26%;
+        width: 22%;
     }
     .checkin-image-4col {
-        border: 10px solid #E3B524;
+        border: 10px solid #fff;
     }
     div#opstelling-1 {
-        background: #E3B524 !important;
+        background: #fff !important;
         color: #202020;
     }
     .naambox {
         font-size: 30px;
         font-weight: 900;
     }
-    div#switch-1::before {
-        content: "En de winnaar is...";
-        font-size: 30px;
-        font-weight: 800;
-        display: flex;
-        justify-content: center;
-    }
     div#switch-1::after {
-        content: "- Druk op de WITTE knop om het potje te eindigen - ";
-        font-size: 20px;
+        content: "- Druk op de WITTE knop - ";
+        font-size: 22px;
         font-weight: 800;
         display: flex;
         justify-content: center;
     }
-}
+    .knock-out-naam{
+        display: none;
+    }
 
-[class|="confetti"] {
-    position: absolute;
-  }
-  
-  .red {
-    background-color: #E3B524;
-  }
-  
-  .yellow {
-    background-color: #F9BD15;
-  }
-  
-  .blue {
-    background-color: #DBA112;
-  }
+}
 
    .quotering-2, .quotering-1 {
     width: 87px;

@@ -83,13 +83,13 @@
 
 @endsection
 @push('footer-scripts')
-<script src="js/confetti.js"></script>
+{{-- <script src="js/confetti.js"></script>
 @if(count($checkedin) < 2)
     
 <script>
         startConfetti();
 </script>
-@endif
+@endif --}}
 <script>
         jQuery(document).ready(function($) {
             var check = false;

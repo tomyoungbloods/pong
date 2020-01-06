@@ -103,15 +103,15 @@ class PointsController extends Controller
 
         if($active_players_count == 3) {
           // 3rd place bonus
-          $bonus = 1;
+          $bonus = 0;
         }
         elseif($active_players_count == 2) {
           // 2nd place bonus
-          $bonus = 2;
+          $bonus = 0;
         }
         elseif($active_players_count == 1) {
           // 1st place bonus
-          $bonus = 3;
+          $bonus = 0;
         }
         else { $bonus = 0; }
 

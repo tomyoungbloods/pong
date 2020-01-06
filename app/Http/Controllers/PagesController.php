@@ -321,14 +321,14 @@ class PagesController extends Controller
                  $quotering = $player->quotering;  
                } else {
                  $player->checked = 0; 
-                 $dikke_bmw = $player_collection->where('id', $player->id)->first();
-                //  dd($dikke_bmw);
+                 $quote_count = $player_collection->where('id', $player->id)->first();
+                //  dd($quote_count);
                  $point = new Point;
                  // Set PlayerPoint attributes
                  $point->player_id = $player->id;
                  // calculate points
                  // $request->points * avg(ratio)
-                 $point->points = ceil($dikke_bmw->quotering_count);
+                 $point->points = ceil($quote_count->quotering_count);
                  $point->save();
                  }
 
@@ -344,8 +344,9 @@ class PagesController extends Controller
               $updated_peoples[] = $player_old;
             }
          }
-         $quote_rate_current = 0;
-         $updated_peoples[0]->quotering_count = $updated_peoples[0]->quotering_count + $updated_peoples[0]->quotering;
+         if(array_key_exists('0', $updated_peoples)) {
+            $updated_peoples[0]->quotering_count = $updated_peoples[0]->quotering_count + $updated_peoples[0]->quotering;
+         }
 
          // if position 1 is out, switch pos 1 and pos 2 in array $updated_peoples
          if($pos == 0 && count($updated_peoples) > 1) {

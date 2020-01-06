@@ -45,7 +45,8 @@ class Player extends Model
         $points = $this->points;
         $count = $points->count();
 
-        $total = 0;
+        $total = 1;
+        $ratio = 1;
         foreach($points as $point) {
             $total = $total + $point->points;
             $ratio = round(($total / $count), 2); 

@@ -27,8 +27,8 @@
                                     <div class="knock-out-naam">
                                                                 
                                         <div>
-                                        RATIO: {{ $player->points_ratio}}<br>
-                                        POINT COUNT:  {{ $player->quotering_count }}
+                                        GEM PER POTJE: {{ $player->points_ratio}}<br>
+                                        PUNTEN DEZE RONDE:  {{ $player->quotering_count }}
                                         </div>
                                     </div> 
                                 </div>

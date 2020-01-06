@@ -60,7 +60,7 @@
                         <p>Klopt dit?</p>
                     </div>
                     <div class="modal-footer">
-                        <form id="exit-form" action=""  value="{{$player->point_count}}" method="POST">
+                        <form id="exit-form" action=""  value="{{ ceil($player->quotering_count) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" id="exit-points-val" name="points">

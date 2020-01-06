@@ -223,6 +223,7 @@ class PagesController extends Controller
             $player->last_four_games = $player->last_four_games;
             $player->total_pauze_prices = $player->total_pauze_prices;
             $player->points_ratio = $player->points_ratio;
+            $player->quotering_count = 0;
           } 
 
         //Tel de inhoud van de count array
@@ -299,27 +300,36 @@ class PagesController extends Controller
 
     public function updateKnockout(Request $request, Player $player, $id, $pos)
     {    
-        // Retrieve player
-        $player = Player::find($id);
+        
+        // $player = Player::find($id);
+
         //Pak de 'peoples' uit de sessie en het count element vanuit de sessie
-        $sessie  = Session::get('game_info')['checkedin'];
+        $sessie  = Session::get('game_info');
+
+        
+        // Retrieve player
+        $player = $collect_players->where('id', $id)->first();
+        
+        dd($player);
         $start_checked_in = Session::get('game_info')['count_before'];
         //Maak alvast een array aan voor de geupdate peoples
         $updated_peoples = [];
         //Start de functie aanwezig
         if(request('checked')){
           $player->checked = 1;
+          $player->quotering_count = $player->quotering;
         } else {
           $player->checked = 0; 
           $point = new Point;
           // Set PlayerPoint attributes
           $point->player_id = $player->id;
           // calculate points
-          // $request->points * avg(ratio)
           $point->points = $request->points;
+          
           $point->save();
           }
         $player->save();
+        dd($player);
 
         // Update ratio count Player not knocked out
         // (ratio_count = ratio_count + player_ratio)
@@ -344,6 +354,8 @@ class PagesController extends Controller
            'checkedin' => $updated_peoples,
            'count_before' => $start_checked_in,
          ];
+
+        
       //Gooi de sessie leeg en plaats de nieuwe game info erin
       Session::flush('game_info');
       Session::put('game_info', $new_game_info);
